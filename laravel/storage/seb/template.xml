@@ -305,40 +305,7 @@
         <key>oskBehavior</key>
         <integer>2</integer>
         <key>permittedProcesses</key>
-        <array>
-            <dict>
-                <key>active</key>
-                <true/>
-                <key>allowUserToChooseApp</key>
-                <false/>
-                <key>arguments</key>
-                <array></array>
-                <key>autostart</key>
-                <false/>
-                <key>description</key>
-                <string/>
-                <key>executable</key>
-                <string>idea64.exe</string>
-                <key>iconInTaskbar</key>
-                <true/>
-                <key>identifier</key>
-                <string/>
-                <key>originalName</key>
-                <string/>
-                <key>os</key>
-                <integer>1</integer>
-                <key>path</key>
-                <string>%LOCALAPPDATA%\programs\intellij idea community edition\bin</string>
-                <key>runInBackground</key>
-                <false/>
-                <key>strongKill</key>
-                <false/>
-                <key>title</key>
-                <string>idea64</string>
-                <key>windowHandlingProcess</key>
-                <string/>
-            </dict>
-        </array>
+        <array></array>
         <key>pinEmbeddedCertificates</key>
         <false/>
         <key>prohibitedProcesses</key>
@@ -1507,37 +1474,7 @@
                 <key>regex</key>
                 <false/>
                 <key>expression</key>
-                <string>ikasgela.com</string>
-                <key>action</key>
-                <integer>1</integer>
-            </dict>
-            <dict>
-                <key>active</key>
-                <true/>
-                <key>regex</key>
-                <false/>
-                <key>expression</key>
-                <string>jetbrains://*</string>
-                <key>action</key>
-                <integer>1</integer>
-            </dict>
-            <dict>
-                <key>active</key>
-                <true/>
-                <key>regex</key>
-                <false/>
-                <key>expression</key>
-                <string>gitkraken://*</string>
-                <key>action</key>
-                <integer>1</integer>
-            </dict>
-            <dict>
-                <key>active</key>
-                <true/>
-                <key>regex</key>
-                <false/>
-                <key>expression</key>
-                <string>s3.eu-west-1.amazonaws.com/ficheros.ikasgela.com/*</string>
+                <string>ciber-egibide.eu</string>
                 <key>action</key>
                 <integer>1</integer>
             </dict>
@@ -1550,7 +1487,7 @@
         <false/>
         <key>whitelistURLFilter</key>
         <string>
-            ^.*?:\/\/((((ikasgela\.com)|(.*?\.ikasgela\.com)))|(((ikasgela\.com)|(.*?\.ikasgela\.com))\/.*?))(()|(\?.*?))$;^jetbrains:\/\/((((.*?)|(.*?\..*?)))|(((.*?)|(.*?\..*?))\/.*?))(()|(\?.*?))$;^gitkraken:\/\/((((.*?)|(.*?\..*?)))|(((.*?)|(.*?\..*?))\/.*?))(()|(\?.*?))$;^.*?:\/\/((s3\.eu-west-1\.amazonaws\.com)|(.*?\.s3\.eu-west-1\.amazonaws\.com))\/((/ficheros\.ikasgela\.com/.*?)|(/ficheros\.ikasgela\.com/.*?))(()|(\?.*?))$
+            ^.*?:\/\/((((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu)))|(((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu))\/.*?))(()|(\?.*?))$
         </string>
         <key>zoomMode</key>
         <integer>0</integer>
