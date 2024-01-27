@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('safe_exams', function (Blueprint $table) {
             $table->id();
 
-            $table->string('classroom')->nullable();
-            $table->string('url')->nullable();
+            $table->string('classroom');
+            $table->string('url');
             $table->string('token')->nullable();
             $table->string('quit_password')->nullable();
 
