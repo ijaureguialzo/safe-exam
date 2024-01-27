@@ -8,7 +8,7 @@
         <table class="table align-middle">
             <thead>
             <tr>
-                <th colspan="2">{{ __('Classroom') }}</th>
+                <th>{{ __('Classroom') }}</th>
                 <th colspan="2">{{ __('URL') }}</th>
                 <th colspan="2">{{ __('Token') }}</th>
                 <th colspan="2">{{ __('Quit password') }}</th>
@@ -18,23 +18,26 @@
             @foreach($safe_exams as $safe_exam)
                 <tr>
                     <td>{{ $safe_exam->classroom }}</td>
-                    <td>
-                        <div class="btn-group">
-                            <a href="#"
-                               title="{{ __('Edit classroom') }}"
-                               class="btn btn-sm btn-secondary" role="button">
-                                <i class="bi bi-pencil"></i>
-                            </a>
-                        </div>
-                    </td>
                     <td>{{ $safe_exam->url }}</td>
                     <td>
                         <div class="btn-group">
-                            <a href="#"
-                               title="{{ __('Edit URL') }}"
-                               class="btn btn-sm btn-secondary" role="button">
+                            <a href="{{ route('safe_exams.edit', [$safe_exam->id]) }}"
+                               title="{{ __('Edit classroom') }}"
+                               class="btn btn-sm btn-secondary me-1" role="button">
                                 <i class="bi bi-pencil"></i>
                             </a>
+                        </div>
+                        <div class="btn-group">
+                            <form action="{{ route('safe_exams.destroy', [$safe_exam->id]) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <button title="{{ __('Delete classroom') }}"
+                                        name="delete_classroom"
+                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
+                                        class="btn btn-sm btn-danger">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </form>
                         </div>
                     </td>
                     <td>{{ $safe_exam->token ?: '-' }}</td>
@@ -92,4 +95,13 @@
             </tbody>
         </table>
     </div>
+
+    <div class="mt-5">
+        <a href="{{ route('safe_exams.create') }}"
+           title="{{ __('New classroom') }}"
+           class="btn btn-primary" role="button">
+            {{ __('New classroom') }}
+        </a>
+    </div>
+
 @endsection

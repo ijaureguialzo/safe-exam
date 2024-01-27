@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\SafeExam;
-use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -20,6 +20,56 @@ class SafeExamController extends Controller
         $safe_exams = Auth::user()->safe_exams;
 
         return view('safe_exams.index', compact('safe_exams'));
+    }
+
+    public function create()
+    {
+        return view('safe_exams.create');
+    }
+
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'classroom' => 'required',
+            'url' => 'required',
+        ]);
+
+        SafeExam::create([
+            'classroom' => request('classroom'),
+            'url' => request('url'),
+            'token' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes'))),
+            'quit_password' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes'))),
+            'user_id' => Auth::user()->id,
+        ]);
+
+        return redirect(route('safe_exams.index'));
+    }
+
+    public function edit(SafeExam $safe_exam)
+    {
+        return view('safe_exams.edit', compact('safe_exam'));
+    }
+
+    public function update(Request $request, SafeExam $safe_exam)
+    {
+        $this->validate($request, [
+            'classroom' => 'required',
+            'url' => 'required',
+        ]);
+
+        $safe_exam->update([
+            'classroom' => request('classroom'),
+            'url' => request('url'),
+        ]);
+
+        return redirect(route('safe_exams.index'));
+    }
+
+    public function destroy(SafeExam $safe_exam)
+    {
+        $safe_exam->delete();
+
+        return back();
     }
 
     public function reset_token(SafeExam $safe_exam)
