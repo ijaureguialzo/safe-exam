@@ -128,7 +128,12 @@ class SafeExamController extends Controller
 
         $seb_session = Str::contains(Agent::getUserAgent(), "SEB/ikasgela (" . $safe_exam->token . ")");
 
-        return view('safe_exams.enter', compact('safe_exam'));
+        $sebs_url = route('safe_exams.config_seb', $safe_exam);
+        //$sebs_url = Str::replace("http", "seb", $sebs_url);
+
+        $sebs_exit_url = route('safe_exams.exit_seb', hash("sha256", $safe_exam->quit_password));
+
+        return view('safe_exams.enter', compact('sebs_url', 'sebs_exit_url'));
     }
 
     public function exit_seb()
