@@ -4,7 +4,7 @@
 
     @include('partials.titular', ['titular' => __('Welcome'), 'subtitulo' => ''])
 
-    @if(!$seb_session)
+    @if($seb_session)
         <a class="btn btn-success" href="{{ $safe_exam->url }}">Click here to open application</a>
         <a class="btn btn-danger" href="{{ $sebs_exit_url }}">Click here to exit Safe Exam Browser</a>
     @else
