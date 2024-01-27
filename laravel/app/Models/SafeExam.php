@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class SafeExam extends Model
 {
     protected $fillable = [
-        'classroom', 'url', 'token', 'quit_password',
+        'classroom', 'url', 'token', 'quit_password', 'user_id'
     ];
 
     public function user()
