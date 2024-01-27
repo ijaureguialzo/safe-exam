@@ -18,7 +18,7 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
-Route::get('/safe_exams/{user}/config_seb', [SafeExamController::class, 'config_seb'])
+Route::get('/safe_exams/{safe_exam}/config_seb', [SafeExamController::class, 'config_seb'])
     ->name('safe_exams.config_seb');
 Route::get('/classroom/{classroom}', [SafeExamController::class, 'enter_seb'])
     ->name('safe_exams.enter_seb');
