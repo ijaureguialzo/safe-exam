@@ -18,17 +18,18 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 
+Route::get('/safe_exams/{user}/config_seb', [SafeExamController::class, 'config_seb'])
+    ->name('safe_exams.config_seb');
+Route::get('/classroom/{classroom}', [SafeExamController::class, 'enter_seb'])
+    ->name('safe_exams.enter_seb');
+Route::get('/safe_exams/exit_seb/{quit_password_hash}', [SafeExamController::class, 'exit_seb'])
+    ->name('safe_exams.exit_seb');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::get('/', function () {
         return redirect()->route('safe_exams.index');
     });
-
-    Route::get('/safe_exams/{user}/config_seb', [SafeExamController::class, 'config_seb'])
-        ->name('safe_exams.config_seb');
-
-    Route::get('/safe_exams/exit_seb/{quit_password_hash}', [SafeExamController::class, 'exit_seb'])
-        ->name('safe_exams.exit_seb');
 
     Route::get('/safe_exams', [SafeExamController::class, 'index'])
         ->name('safe_exams.index');
