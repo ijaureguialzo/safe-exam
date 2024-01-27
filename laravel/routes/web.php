@@ -34,12 +34,12 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/safe_exams', [SafeExamController::class, 'index'])
         ->name('safe_exams.index');
-    Route::post('/safe_exams/reset_token', [SafeExamController::class, 'reset_token'])
+    Route::post('/safe_exams/{safe_exam}/reset_token', [SafeExamController::class, 'reset_token'])
         ->name('safe_exams.reset_token');
-    Route::post('/safe_exams/reset_quit_password', [SafeExamController::class, 'reset_quit_password'])
+    Route::post('/safe_exams/{safe_exam}/reset_quit_password', [SafeExamController::class, 'reset_quit_password'])
         ->name('safe_exams.reset_quit_password');
-    Route::delete('/safe_exams/delete_token', [SafeExamController::class, 'delete_token'])
+    Route::delete('/safe_exams/{safe_exam}/delete_token', [SafeExamController::class, 'delete_token'])
         ->name('safe_exams.delete_token');
-    Route::delete('/safe_exams/delete_quit_password', [SafeExamController::class, 'delete_quit_password'])
+    Route::delete('/safe_exams/{safe_exam}/delete_quit_password', [SafeExamController::class, 'delete_quit_password'])
         ->name('safe_exams.delete_quit_password');
 });
