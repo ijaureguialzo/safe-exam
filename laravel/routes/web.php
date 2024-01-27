@@ -40,4 +40,16 @@ Route::middleware(['auth'])->group(function () {
         ->name('safe_exams.delete_token');
     Route::delete('/safe_exams/{safe_exam}/delete_quit_password', [SafeExamController::class, 'delete_quit_password'])
         ->name('safe_exams.delete_quit_password');
+
+    Route::get('/safe_exams/create', [SafeExamController::class, 'create'])
+        ->name('safe_exams.create');
+    Route::post('/safe_exams', [SafeExamController::class, 'store'])
+        ->name('safe_exams.store');
+    Route::get('/safe_exams/{safe_examn}/edit', [SafeExamController::class, 'edit'])
+        ->name('safe_exams.edit');
+    Route::put('/safe_exams/{safe_exam}', [SafeExamController::class, 'update'])
+        ->name('safe_exams.update');
+    Route::delete('/safe_exams/{safe_exam}', [SafeExamController::class, 'destroy'])
+        ->name('safe_exams.destroy');
+
 });
