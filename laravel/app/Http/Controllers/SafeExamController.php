@@ -113,7 +113,7 @@ class SafeExamController extends Controller
         $xml = file_get_contents($path);
 
         $xml = Str::replace("IKASGELA_TOKEN", $safe_exam->token, $xml);
-        $xml = Str::replace("IKASGELA_URL", "https://" . request()->getHost(), $xml);
+        $xml = Str::replace("IKASGELA_URL", route('safe_exams.enter_seb', $safe_exam->classroom), $xml);
         $xml = Str::replace("IKASGELA_QUIT_PASSWORD", hash("sha256", $safe_exam->quit_password), $xml);
         $xml = Str::replace("IKASGELA_EXIT_URL", route('safe_exams.exit_seb', hash("sha256", $safe_exam->quit_password)), $xml);
 
