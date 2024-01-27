@@ -74,7 +74,7 @@ class SafeExamController extends Controller
 
     public function reset_token(SafeExam $safe_exam)
     {
-        $safe_exam->token = bin2hex(openssl_random_pseudo_bytes(8));
+        $safe_exam->token = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes')));
         $safe_exam->save();
 
         return back();
@@ -90,7 +90,7 @@ class SafeExamController extends Controller
 
     public function reset_quit_password(SafeExam $safe_exam)
     {
-        $safe_exam->quit_password = bin2hex(openssl_random_pseudo_bytes(2));
+        $safe_exam->quit_password = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes')));
         $safe_exam->save();
 
         return back();

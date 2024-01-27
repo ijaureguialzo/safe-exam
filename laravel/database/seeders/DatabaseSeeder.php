@@ -22,8 +22,8 @@ class DatabaseSeeder extends Seeder
         DB::table('safe_exams')->insert([
             'classroom' => 'test',
             'url' => 'https://api.socrative.comm/fake/123456',
-            'token' => '46c5dea23f0971d8',
-            'quit_password' => 'a7a1',
+            'token' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes'))),
+            'quit_password' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes'))),
             'user_id' => 1,
         ]);
     }
