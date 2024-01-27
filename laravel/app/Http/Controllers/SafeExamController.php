@@ -7,12 +7,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Jenssegers\Agent\Facades\Agent;
 
 class SafeExamController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth')->except(['config_seb', 'exit_seb']);
+        $this->middleware('auth')->except(['config_seb', 'enter_seb', 'exit_seb']);
     }
 
     public function index()
@@ -119,6 +120,15 @@ class SafeExamController extends Controller
         return response()->streamDownload(function () use ($xml) {
             echo $xml;
         }, 'config.seb');
+    }
+
+    public function enter_seb(Request $request)
+    {
+        $safe_exam = SafeExam::where('classroom', request('classroom'))->firstOrFail();
+
+        $seb_session = Str::contains(Agent::getUserAgent(), "SEB/ikasgela (" . $safe_exam->token . ")");
+
+        return view('safe_exams.enter', compact('safe_exam'));
     }
 
     public function exit_seb()
