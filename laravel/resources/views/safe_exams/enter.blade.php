@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-4">
+        <div class="col-6 pt-3">
             @if($seb_session)
                 <a class="btn btn-success d-block py-5 mb-5"
                    href="{{ $safe_exam->url }}">{{ __('Click here to open the application') }}</a>
