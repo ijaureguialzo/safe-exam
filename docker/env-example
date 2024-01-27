@@ -1,0 +1,22 @@
+# Versiones de los contenedores
+PHP_VERSION=8.2
+ALPINE_VERSION=3.18
+MARIADB_VERSION=10.11
+REDIS_VERSION=7.0
+PHPMYADMIN_VERSION=latest
+PHPREDISADMIN_VERSION=latest
+NGINX_VERSION=mainline
+HTTPS_PORTAL_VERSION=1
+
+# Variables de configuración
+MYSQL_ROOT_PASSWORD=12345Abcde
+MYSQL_DATABASE=safe-exam
+MYSQL_USER=safe-exam
+MYSQL_PASSWORD=12345Abcde
+
+# Prefijo para los contenedores
+COMPOSE_PROJECT_NAME=safe-exam
+
+# Sitios web
+HTTPS_PORTAL_SITES=safe-exam.test -> http://nginx:80, phpmyadmin.safe-exam.test -> http://phpmyadmin:80,
+HTTPS_PORTAL_STAGE=local
