@@ -133,7 +133,7 @@ class SafeExamController extends Controller
 
         $sebs_exit_url = route('safe_exams.exit_seb', hash("sha256", $safe_exam->quit_password));
 
-        return view('safe_exams.enter', compact('sebs_url', 'sebs_exit_url'));
+        return view('safe_exams.enter', compact(['sebs_url', 'sebs_exit_url', 'seb_session', 'safe_exam']));
     }
 
     public function exit_seb()
