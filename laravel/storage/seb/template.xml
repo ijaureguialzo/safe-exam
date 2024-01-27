@@ -1478,6 +1478,16 @@
                 <key>action</key>
                 <integer>1</integer>
             </dict>
+            <dict>
+                <key>active</key>
+                <true/>
+                <key>regex</key>
+                <false/>
+                <key>expression</key>
+                <string>socrative.com</string>
+                <key>action</key>
+                <integer>1</integer>
+            </dict>
         </array>
         <key>urlFilterTrustedContent</key>
         <true/>
@@ -1487,7 +1497,8 @@
         <false/>
         <key>whitelistURLFilter</key>
         <string>
-            ^.*?:\/\/((((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu)))|(((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu))\/.*?))(()|(\?.*?))$
+            ^.*?:\/\/((((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu)))|(((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu))\/.*?))(()|(\?.*?))$;
+            ^.*?:\/\/((((socrative\.com)|(.*?\.socrative\.com)))|(((socrative\.com)|(.*?\.socrative\.com))\/.*?))(()|(\?.*?))$
         </string>
         <key>zoomMode</key>
         <integer>0</integer>
