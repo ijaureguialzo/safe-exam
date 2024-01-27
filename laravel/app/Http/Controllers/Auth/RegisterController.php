@@ -39,6 +39,10 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+
+        if (!config('safe_exam.registration_enabled')) {
+            abort(404);
+        }
     }
 
     /**
