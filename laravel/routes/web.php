@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\SafeExamController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,4 +22,24 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [HomeController::class, 'index'])
+    ->name('home');
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/safe_exams/{user}/config_seb', [SafeExamController::class, 'config_seb'])
+        ->name('safe_exams.config_seb');
+
+    Route::get('/safe_exams/exit_seb/{quit_password_hash}', [SafeExamController::class, 'exit_seb'])
+        ->name('safe_exams.exit_seb');
+
+    Route::get('/safe_exams', [SafeExamController::class, 'index'])
+        ->name('safe_exams.index');
+    Route::post('/safe_exams/reset_token', [SafeExamController::class, 'reset_token'])
+        ->name('safe_exams.reset_token');
+    Route::post('/safe_exams/reset_quit_password', [SafeExamController::class, 'reset_quit_password'])
+        ->name('safe_exams.reset_quit_password');
+    Route::delete('/safe_exams/delete_token', [SafeExamController::class, 'delete_token'])
+        ->name('safe_exams.delete_token');
+    Route::delete('/safe_exams/delete_quit_password', [SafeExamController::class, 'delete_quit_password'])
+        ->name('safe_exams.delete_quit_password');
+});
