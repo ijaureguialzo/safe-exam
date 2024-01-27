@@ -16,16 +16,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', [HomeController::class, 'index'])
-    ->name('home');
-
 Route::middleware(['auth'])->group(function () {
+
+    Route::get('/', function () {
+        return redirect()->route('safe_exams.index');
+    });
+
     Route::get('/safe_exams/{user}/config_seb', [SafeExamController::class, 'config_seb'])
         ->name('safe_exams.config_seb');
 
