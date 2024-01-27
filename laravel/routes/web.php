@@ -45,7 +45,7 @@ Route::middleware(['auth'])->group(function () {
         ->name('safe_exams.create');
     Route::post('/safe_exams', [SafeExamController::class, 'store'])
         ->name('safe_exams.store');
-    Route::get('/safe_exams/{safe_examn}/edit', [SafeExamController::class, 'edit'])
+    Route::get('/safe_exams/{safe_exam}/edit', [SafeExamController::class, 'edit'])
         ->name('safe_exams.edit');
     Route::put('/safe_exams/{safe_exam}', [SafeExamController::class, 'update'])
         ->name('safe_exams.update');
