@@ -38,10 +38,6 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
             ->name('safe_exams.reset_token');
         Route::post('/safe_exams/{safe_exam}/reset_quit_password', [SafeExamController::class, 'reset_quit_password'])
             ->name('safe_exams.reset_quit_password');
-        Route::delete('/safe_exams/{safe_exam}/delete_token', [SafeExamController::class, 'delete_token'])
-            ->name('safe_exams.delete_token');
-        Route::delete('/safe_exams/{safe_exam}/delete_quit_password', [SafeExamController::class, 'delete_quit_password'])
-            ->name('safe_exams.delete_quit_password');
 
         Route::get('/safe_exams/create', [SafeExamController::class, 'create'])
             ->name('safe_exams.create');

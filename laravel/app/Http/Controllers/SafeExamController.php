@@ -81,25 +81,9 @@ class SafeExamController extends Controller
         return back();
     }
 
-    public function delete_token(SafeExam $safe_exam)
-    {
-        $safe_exam->token = null;
-        $safe_exam->save();
-
-        return back();
-    }
-
     public function reset_quit_password(SafeExam $safe_exam)
     {
         $safe_exam->quit_password = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes')));
-        $safe_exam->save();
-
-        return back();
-    }
-
-    public function delete_quit_password(SafeExam $safe_exam)
-    {
-        $safe_exam->quit_password = null;
         $safe_exam->save();
 
         return back();

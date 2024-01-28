@@ -62,18 +62,8 @@
                                 <button title="{{ __('Reset token') }}"
                                         name="reset_token"
                                         type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
-                                        class="btn btn-sm btn-primary me-2">
-                                    <i class="bi bi-arrow-clockwise"></i>
-                                </button>
-                            </form>
-                            <form action="{{ route('safe_exams.delete_token', [$safe_exam->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button title="{{ __('Delete token') }}"
-                                        name="delete_token"
-                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
                                         class="btn btn-sm btn-danger">
-                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-arrow-clockwise"></i>
                                 </button>
                             </form>
                         </div>
@@ -87,19 +77,8 @@
                                 <button title="{{ __('Reset quit password') }}"
                                         name="reset_quit_password"
                                         type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
-                                        class="btn btn-sm btn-primary me-2">
-                                    <i class="bi bi-arrow-clockwise"></i>
-                                </button>
-                            </form>
-                            <form action="{{ route('safe_exams.delete_quit_password', [$safe_exam->id]) }}"
-                                  method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button title="{{ __('Delete quit password') }}"
-                                        name="delete_quit_password"
-                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
                                         class="btn btn-sm btn-danger">
-                                    <i class="bi bi-trash"></i>
+                                    <i class="bi bi-arrow-clockwise"></i>
                                 </button>
                             </form>
                         </div>
