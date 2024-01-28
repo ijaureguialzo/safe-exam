@@ -3,7 +3,7 @@
 @section('content')
 
     <div class="row justify-content-center">
-        <div class="col-6 pt-3">
+        <div class="col-6 pt-3 text-center">
             @if($seb_session)
                 <a class="btn btn-success d-block py-5 mb-5"
                    href="{{ $safe_exam->url }}">{{ __('Click here to open the application') }}</a>
@@ -12,6 +12,11 @@
             @else
                 <a class="btn btn-primary d-block py-5"
                    href="{{ $sebs_url }}">{{ __('Click here to open Safe Exam Browser') }}</a>
+                <p class="mt-4 small">{{__('If the button doesn\'t work, you will have to')}} <a
+                        class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover"
+                        target="_blank"
+                        href="https://safeexambrowser.org/download_en.html">{{ __('download and install Safe Exam Browser') }}</a>.
+                </p>
             @endif
         </div>
     </div>
