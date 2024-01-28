@@ -73,3 +73,5 @@ Temporary Items
 .idea/
 
 docker/.env
+
+private/
