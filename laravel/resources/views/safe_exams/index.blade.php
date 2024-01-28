@@ -27,7 +27,8 @@
             @foreach($safe_exams as $safe_exam)
                 <tr>
                     <td>{{ $safe_exam->classroom }}</td>
-                    <td>{{ $safe_exam->url }}</td>
+                    <td><a class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover"
+                           target="_blank" href="{{ $safe_exam->url }}">{{ $safe_exam->url }}</a></td>
                     <td>
                         <div class="d-flex">
                             <button title="{{ __('Copy the safe classroom link to clipboard') }}"
