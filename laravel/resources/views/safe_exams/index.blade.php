@@ -2,7 +2,7 @@
 
 @section('content')
 
-    @include('partials.titular', ['titular' => __('Your safe exam classrooms'), 'subtitulo' => ''])
+    @include('partials.titular', ['titular' => __('Your classrooms'), 'subtitulo' => ''])
 
     <div>
         <table class="table align-middle">

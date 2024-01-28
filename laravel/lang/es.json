@@ -10,10 +10,10 @@
     "Click here to open the application": "Haz click aquí para abrir la aplicación",
     "click here to request another": "haz click aquí para que te enviemos otro",
     "Confirm Password": "Confirmar contraseña",
-    "Delete classroom": "Borrar clase",
-    "Delete quit password": "Password de salida",
-    "Delete token": "Borrar token",
-    "Edit classroom": "Editar clase",
+    "Delete classroom": "Borrar la clase",
+    "Delete quit password": "Borrar el password de salida",
+    "Delete token": "Borrar el token",
+    "Edit classroom": "Editar la clase",
     "Email Address": "Dirección de email",
     "Exiting Safe Exam Browser": "Saliendo de Safe Exam Browser",
     "Forgot Your Password?": "¿Contraseña olvidada?",
@@ -29,7 +29,7 @@
     "Register": "Registro",
     "Remember Me": "Recuérdame",
     "Reset Password": "Cambiar contraseña",
-    "Reset quit password": "Restablecer password de salida",
+    "Reset quit password": "Restablecer el password de salida",
     "Reset token": "Restablecer el token",
     "Save": "Guardar",
     "Send Password Reset Link": "Enviar un enlace de cambio de contraseña",
@@ -37,5 +37,5 @@
     "Token": "Token",
     "URL": "URL",
     "Verify Your Email Address": "Verifica tu dirección de email",
-    "Your safe exam classrooms": "Tus clases de safe exam"
+    "Your classrooms": "Tus clases"
 }
