@@ -8,7 +8,7 @@
         function copyToClipboard(text) {
             navigator.clipboard.writeText(text).then(
                 function () {
-                    alert("{{ __('Link copied') }}");
+                    alert("{{ __('Link copied') }}.");
                 });
         }
     </script>
