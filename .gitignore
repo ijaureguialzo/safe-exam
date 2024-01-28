@@ -75,3 +75,5 @@ Temporary Items
 docker/.env
 
 private/
+
+docker/docker-compose.override.yml
