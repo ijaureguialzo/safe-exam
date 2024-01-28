@@ -9,14 +9,15 @@
         <div class="row mb-3">
             <label class="col-2 form-label" for="classroom">{{ __('Classroom') }}</label>
             <div class="col-10">
-                <input class="form-control" type="text" id="classroom" name="classroom"/>
+                <input class="form-control" type="text" id="classroom" name="classroom" placeholder="test"/>
                 <span class="text-danger">{{ $errors->first('classroom') }}</span>
             </div>
         </div>
         <div class="row mb-3">
             <label class="col-2 form-label" for="url">{{ __('URL') }}</label>
             <div class="col-10">
-                <input class="form-control" type="text" id="url" name="url"/>
+                <input class="form-control" type="text" id="url" name="url"
+                       placeholder="https://api.socrative.comm/fake/123456"/>
                 <span class="text-danger">{{ $errors->first('url') }}</span>
             </div>
         </div>
