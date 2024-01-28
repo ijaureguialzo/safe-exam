@@ -61,7 +61,7 @@
         <key>allowVideoCapture</key>
         <false/>
         <key>allowVirtualMachine</key>
-        <true/>
+        <false/>
         <key>allowWlan</key>
         <false/>
         <key>audioControlEnabled</key>
