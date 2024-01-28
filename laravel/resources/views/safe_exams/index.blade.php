@@ -4,6 +4,15 @@
 
     @include('partials.titular', ['titular' => __('Your classrooms'), 'subtitulo' => ''])
 
+    <script>
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(
+                function () {
+                    alert("{{ __('Link copied') }}");
+                });
+        }
+    </script>
+
     <div>
         <table class="table align-middle">
             <thead>
@@ -20,6 +29,15 @@
                     <td>{{ $safe_exam->classroom }}</td>
                     <td>{{ $safe_exam->url }}</td>
                     <td>
+                        <div class="btn-group">
+                            <button title="{{ __('Copy the safe classroom link to clipboard') }}"
+                                    name="copy_link"
+                                    type="button"
+                                    onclick="copyToClipboard('{{ 'https://' . request()->getHost() . '/classroom/' . $safe_exam->classroom }}')"
+                                    class="btn btn-sm btn-primary me-1">
+                                <i class="bi bi-copy"></i>
+                            </button>
+                        </div>
                         <div class="btn-group">
                             <a href="{{ route('safe_exams.edit', [$safe_exam->id]) }}"
                                title="{{ __('Edit classroom') }}"
