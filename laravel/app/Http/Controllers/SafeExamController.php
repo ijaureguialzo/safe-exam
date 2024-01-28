@@ -31,8 +31,8 @@ class SafeExamController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'classroom' => 'required',
-            'url' => 'required',
+            'classroom' => 'required|unique:safe_exams',
+            'url' => 'required|url:http,https',
         ]);
 
         SafeExam::create([
@@ -54,8 +54,8 @@ class SafeExamController extends Controller
     public function update(Request $request, SafeExam $safe_exam)
     {
         $this->validate($request, [
-            'classroom' => 'required',
-            'url' => 'required',
+            'classroom' => 'required|unique:safe_exams',
+            'url' => 'required|url:http,https',
         ]);
 
         $safe_exam->update([
