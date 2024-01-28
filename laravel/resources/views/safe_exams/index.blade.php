@@ -13,10 +13,10 @@
         }
     </script>
 
-    <div>
-        <table class="table align-middle">
+    <div class="table-responsive">
+        <table class="table align-middle table-hover">
             <thead>
-            <tr>
+            <tr class="table-dark">
                 <th>{{ __('Classroom') }}</th>
                 <th colspan="2">{{ __('URL') }}</th>
                 <th colspan="2">{{ __('Token') }}</th>
@@ -29,23 +29,19 @@
                     <td>{{ $safe_exam->classroom }}</td>
                     <td>{{ $safe_exam->url }}</td>
                     <td>
-                        <div class="btn-group">
+                        <div class="d-flex">
                             <button title="{{ __('Copy the safe classroom link to clipboard') }}"
                                     name="copy_link"
                                     type="button"
                                     onclick="copyToClipboard('{{ 'https://' . request()->getHost() . '/classroom/' . $safe_exam->classroom }}')"
-                                    class="btn btn-sm btn-primary me-1">
+                                    class="btn btn-sm btn-primary me-2">
                                 <i class="bi bi-copy"></i>
                             </button>
-                        </div>
-                        <div class="btn-group">
                             <a href="{{ route('safe_exams.edit', [$safe_exam->id]) }}"
                                title="{{ __('Edit classroom') }}"
-                               class="btn btn-sm btn-secondary me-1" role="button">
+                               class="btn btn-sm btn-secondary me-2" role="button">
                                 <i class="bi bi-pencil"></i>
                             </a>
-                        </div>
-                        <div class="btn-group">
                             <form action="{{ route('safe_exams.destroy', [$safe_exam->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
@@ -60,7 +56,7 @@
                     </td>
                     <td>{{ $safe_exam->token ?: '-' }}</td>
                     <td>
-                        <div class="btn-group">
+                        <div class="d-flex">
                             <form action="{{ route('safe_exams.reset_token', [$safe_exam->id]) }}" method="POST">
                                 @csrf
                                 <button title="{{ __('Reset token') }}"
@@ -84,7 +80,7 @@
                     </td>
                     <td>{{ $safe_exam->quit_password ?: '-' }}</td>
                     <td>
-                        <div class="btn-group">
+                        <div class="d-flex">
                             <form action="{{ route('safe_exams.reset_quit_password', [$safe_exam->id]) }}"
                                   method="POST">
                                 @csrf
