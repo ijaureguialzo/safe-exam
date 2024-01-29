@@ -28,12 +28,14 @@ class SafeExamController extends Controller
         return view('safe_exams.create');
     }
 
+    private $validation_rules = [
+        'classroom' => 'required|max:255|alpha_dash|unique:safe_exams',
+        'url' => 'required|max:255|url:http,https',
+    ];
+
     public function store(Request $request)
     {
-        $this->validate($request, [
-            'classroom' => 'required|unique:safe_exams',
-            'url' => 'required|url:http,https',
-        ]);
+        $this->validate($request, $this->validation_rules);
 
         SafeExam::create([
             'classroom' => request('classroom'),
@@ -53,10 +55,7 @@ class SafeExamController extends Controller
 
     public function update(Request $request, SafeExam $safe_exam)
     {
-        $this->validate($request, [
-            'classroom' => 'required|unique:safe_exams',
-            'url' => 'required|url:http,https',
-        ]);
+        $this->validate($request, $this->validation_rules);
 
         $safe_exam->update([
             'classroom' => request('classroom'),
