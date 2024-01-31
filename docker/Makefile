@@ -48,6 +48,12 @@ stop-all:
 workspace:
 	@docker compose exec php /bin/bash
 
+locales:
+	@docker compose exec php php artisan translatable:export es
+	@docker compose exec php php artisan translatable:inspect-translations es
+	@docker compose exec php php artisan translatable:export eu
+	@docker compose exec php php artisan translatable:inspect-translations eu
+
 build:
 	@docker compose pull && docker compose build --pull
 
