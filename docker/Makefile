@@ -19,6 +19,14 @@ help: _header
 	@echo clean
 	@echo --------------------------------------------------------
 
+_urls: _header
+	${info }
+	@echo Sitios disponibles:
+	@echo ----------------------------------------------
+	@echo [Sitio web] https://safe-exam.test
+	@echo [phpMyAdmin] https://phpmyadmin.safe-exam.test
+	@echo ----------------------------------------------
+
 _header:
 	@echo ---------
 	@echo Safe Exam
@@ -54,11 +62,3 @@ stats:
 
 clean:
 	@docker compose down -v --remove-orphans
-
-_urls: _header
-	${info }
-	@echo Sitios disponibles:
-	@echo ----------------------------------------------
-	@echo [Sitio web] https://safe-exam.test
-	@echo [phpMyAdmin] https://phpmyadmin.safe-exam.test
-	@echo ----------------------------------------------
