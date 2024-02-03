@@ -74,8 +74,6 @@ services:
     environment:
       - PMA_HOST=mariadb
       - PMA_PORT=3306
-      - PMA_USER=root
-      - PMA_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - UPLOAD_LIMIT=1g
     expose:
       - 80
