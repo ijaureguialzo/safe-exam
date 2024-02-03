@@ -75,7 +75,7 @@ class SafeExamController extends Controller
     public function duplicate(SafeExam $safe_exam)
     {
         $clon = $safe_exam->duplicate();
-        $clon->classroom = $clon->classroom . "-" . __("copy") . ')';
+        $clon->classroom = $clon->classroom . "-" . __("copy");
         $clon->save();
 
         return back();
