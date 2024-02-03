@@ -20,3 +20,6 @@ COMPOSE_PROJECT_NAME=safe-exam
 # Sitios web
 HTTPS_PORTAL_SITES=safe-exam.test -> http://nginx:80, phpmyadmin.safe-exam.test -> http://phpmyadmin:80,
 HTTPS_PORTAL_STAGE=local
+
+# Servidor de correo saliente en producción
+POSTFIX_ALLOWED_SENDER_DOMAINS=safe-exam.test

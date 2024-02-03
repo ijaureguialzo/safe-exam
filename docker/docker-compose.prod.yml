@@ -2,6 +2,8 @@ services:
 
   https-portal:
     restart: unless-stopped
+    depends_on:
+      - postfix
 
   mariadb:
     restart: unless-stopped
@@ -17,3 +19,9 @@ services:
 
   redis:
     restart: unless-stopped
+
+  postfix:
+    restart: unless-stopped
+    image: boky/postfix
+    environment:
+      - ALLOWED_SENDER_DOMAINS=${POSTFIX_ALLOWED_SENDER_DOMAINS}
