@@ -17,7 +17,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
-    Auth::routes(['reset' => false]);
+    Auth::routes(['reset' => true]);
 
     Route::get('/safe_exams/{safe_exam}/config_seb', [SafeExamController::class, 'config_seb'])
         ->name('safe_exams.config_seb');
