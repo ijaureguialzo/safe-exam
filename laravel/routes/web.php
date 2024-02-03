@@ -49,6 +49,7 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
             ->name('safe_exams.update');
         Route::delete('/safe_exams/{safe_exam}', [SafeExamController::class, 'destroy'])
             ->name('safe_exams.destroy');
-
+        Route::post('/safe_exams/{safe_exam}/duplicate', [SafeExamController::class, 'duplicate'])
+            ->name('safe_exams.duplicate');
     });
 });

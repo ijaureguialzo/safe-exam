@@ -72,6 +72,15 @@ class SafeExamController extends Controller
         return back();
     }
 
+    public function duplicate(SafeExam $safe_exam)
+    {
+        $clon = $safe_exam->duplicate();
+        $clon->classroom = $clon->classroom . " (" . __("Copy") . ')';
+        $clon->save();
+
+        return back();
+    }
+
     public function reset_token(SafeExam $safe_exam)
     {
         $safe_exam->token = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes')));

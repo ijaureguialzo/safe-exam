@@ -7,3 +7,4 @@ Código fuente de la aplicación.
 - [Agent](https://github.com/jenssegers/agent)
 - [Laravel Localization](https://github.com/mcamara/laravel-localization)
 - [Translatable String Exporter for Laravel](https://github.com/kkomelin/laravel-translatable-string-exporter)
+- [Cloner](https://github.com/BKWLD/cloner)

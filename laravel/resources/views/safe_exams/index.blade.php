@@ -36,13 +36,22 @@
                                     type="button"
                                     onclick="copyToClipboard('{{ 'https://' . request()->getHost() . '/classroom/' . $safe_exam->classroom }}')"
                                     class="btn btn-sm btn-primary me-2">
-                                <i class="bi bi-copy"></i>
+                                <i class="bi bi-clipboard"></i>
                             </button>
                             <a href="{{ route('safe_exams.edit', [$safe_exam->id]) }}"
                                title="{{ __('Edit classroom') }}"
                                class="btn btn-sm btn-secondary me-2" role="button">
                                 <i class="bi bi-pencil"></i>
                             </a>
+                            <form action="{{ route('safe_exams.duplicate', [$safe_exam->id]) }}" method="POST">
+                                @csrf
+                                <button title="{{ __('Duplicate classroom') }}"
+                                        name="duplicate_classroom"
+                                        type="submit"
+                                        class="btn btn-sm btn-secondary me-2">
+                                    <i class="bi bi-copy"></i>
+                                </button>
+                            </form>
                             <form action="{{ route('safe_exams.destroy', [$safe_exam->id]) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
