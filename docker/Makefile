@@ -12,7 +12,7 @@ help: _header
 	@echo Opciones:
 	@echo ---------------------------------
 	@echo start / stop / restart / stop-all
-	@echo start-dev
+	@echo start-dev / start-prod
 	@echo workspace
 	@echo build
 	@echo redis-cli / redis-flush
@@ -39,9 +39,14 @@ _start-command:
 _start-command-dev:
 	@docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --remove-orphans
 
+_start-command-prod:
+	@docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
+
 start: _start-command _urls
 
 start-dev: _start-command-dev _urls
+
+start-prod: _start-command-prod _urls
 
 stop:
 	@docker compose stop
