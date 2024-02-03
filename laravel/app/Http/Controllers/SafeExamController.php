@@ -75,6 +75,8 @@ class SafeExamController extends Controller
     public function duplicate(SafeExam $safe_exam)
     {
         $clon = $safe_exam->duplicate();
+        $clon->token = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes')));
+        $clon->quit_password = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes')));
 
         $i = 1;
         while (SafeExam::where('classroom', $clon->classroom . "-" . $i)->exists()) {
