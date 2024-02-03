@@ -28,6 +28,15 @@ _urls: _header
 	@echo [phpMyAdmin] https://phpmyadmin.safe-exam.test
 	@echo ----------------------------------------------
 
+_urls-dev: _header
+	${info }
+	@echo Sitios disponibles:
+	@echo ------------------------------------------------
+	@echo [Sitio web] https://safe-exam.test
+	@echo [phpMyAdmin] https://phpmyadmin.safe-exam.test
+	@echo [MailCatcher] https://mailcatcher.safe-exam.test
+	@echo ------------------------------------------------
+
 _header:
 	@echo ---------
 	@echo Safe Exam
@@ -44,7 +53,7 @@ _start-command-prod:
 
 start: _start-command _urls
 
-start-dev: _start-command-dev _urls
+start-dev: _start-command-dev _urls-dev
 
 start-prod: _start-command-prod _urls
 
