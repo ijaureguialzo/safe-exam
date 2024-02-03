@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 use Jenssegers\Agent\Facades\Agent;
+use Pdp\Rules;
 
 class SafeExamController extends Controller
 {
@@ -120,6 +121,9 @@ class SafeExamController extends Controller
         $xml = Str::replace("IKASGELA_URL", route('safe_exams.enter_seb', $safe_exam->classroom), $xml);
         $xml = Str::replace("IKASGELA_QUIT_PASSWORD", hash("sha256", $safe_exam->quit_password), $xml);
         $xml = Str::replace("IKASGELA_EXIT_URL", route('safe_exams.exit_seb', hash("sha256", $safe_exam->quit_password)), $xml);
+        $xml = Str::replace("SAFE_EXAM_HOST", preg_quote($this->get_domain(request()->getHost())), $xml);
+        $host = parse_url($safe_exam->url, PHP_URL_HOST);
+        $xml = Str::replace("SAFE_EXAM_URL", preg_quote($this->get_domain($host)), $xml);
 
         return response()->streamDownload(function () use ($xml) {
             echo $xml;
@@ -143,5 +147,12 @@ class SafeExamController extends Controller
     public function exit_seb()
     {
         return view('safe_exams.exit');
+    }
+
+    public function get_domain($host)
+    {
+        $ruta = Storage::disk('seb')->path("/");
+        $publicSuffixList = Rules::fromPath($ruta . '/public_suffix_list.dat.txt');
+        return $publicSuffixList->resolve($host)->registrableDomain()->toString();
     }
 }

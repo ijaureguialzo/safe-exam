@@ -10,6 +10,7 @@
         "bkwld/cloner": "^3.11",
         "guzzlehttp/guzzle": "^7.2",
         "jenssegers/agent": "^2.6",
+        "jeremykendall/php-domain-parser": "^6.0",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.3",
         "laravel/tinker": "^2.8",

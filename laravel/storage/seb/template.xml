@@ -1474,7 +1474,7 @@
                 <key>regex</key>
                 <false/>
                 <key>expression</key>
-                <string>ciber-egibide.eu</string>
+                <string>SAFE_EXAM_HOST</string>
                 <key>action</key>
                 <integer>1</integer>
             </dict>
@@ -1484,7 +1484,7 @@
                 <key>regex</key>
                 <false/>
                 <key>expression</key>
-                <string>socrative.com</string>
+                <string>SAFE_EXAM_URL</string>
                 <key>action</key>
                 <integer>1</integer>
             </dict>
@@ -1497,8 +1497,8 @@
         <false/>
         <key>whitelistURLFilter</key>
         <string>
-            ^.*?:\/\/((((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu)))|(((ciber-egibide\.eu)|(.*?\.ciber-egibide\.eu))\/.*?))(()|(\?.*?))$;
-            ^.*?:\/\/((((socrative\.com)|(.*?\.socrative\.com)))|(((socrative\.com)|(.*?\.socrative\.com))\/.*?))(()|(\?.*?))$
+            ^.*?:\/\/((((SAFE_EXAM_HOST)|(.*?\.SAFE_EXAM_HOST)))|(((SAFE_EXAM_HOST)|(.*?\.SAFE_EXAM_HOST))\/.*?))(()|(\?.*?))$;
+            ^.*?:\/\/((((SAFE_EXAM_URL)|(.*?\.SAFE_EXAM_URL)))|(((SAFE_EXAM_URL)|(.*?\.SAFE_EXAM_URL))\/.*?))(()|(\?.*?))$
         </string>
         <key>zoomMode</key>
         <integer>0</integer>
