@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rule;
 use Jenssegers\Agent\Facades\Agent;
 
 class SafeExamController extends Controller
@@ -28,14 +29,12 @@ class SafeExamController extends Controller
         return view('safe_exams.create');
     }
 
-    private $validation_rules = [
-        'classroom' => 'required|max:255|alpha_dash|unique:safe_exams',
-        'url' => 'required|max:255|url:http,https',
-    ];
-
     public function store(Request $request)
     {
-        $this->validate($request, $this->validation_rules);
+        $this->validate($request, [
+            'classroom' => 'required|max:255|alpha_dash|unique:safe_exams',
+            'url' => 'required|max:255|url:http,https',
+        ]);
 
         SafeExam::create([
             'classroom' => request('classroom'),
@@ -55,7 +54,12 @@ class SafeExamController extends Controller
 
     public function update(Request $request, SafeExam $safe_exam)
     {
-        $this->validate($request, $this->validation_rules);
+        $this->validate($request, [
+            'classroom' => ['required', 'max:255', 'alpha_dash',
+                Rule::unique('safe_exams')->ignore($safe_exam->id),
+            ],
+            'url' => 'required|max:255|url:http,https',
+        ]);
 
         $safe_exam->update([
             'classroom' => request('classroom'),
