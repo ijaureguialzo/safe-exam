@@ -17,7 +17,7 @@ use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 */
 
 Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
-    Auth::routes(['reset' => config('safe_exam.password_reset_enabled')]);
+    Auth::routes(['reset' => config('safe_exam.password_reset_enabled'), 'verify' => config('safe_exam.email_verification_enabled')]);
 
     Route::get('/safe_exams/{safe_exam}/config_seb', [SafeExamController::class, 'config_seb'])
         ->name('safe_exams.config_seb');
@@ -26,7 +26,8 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
     Route::get('/safe_exams/exit_seb/{quit_password_hash}', [SafeExamController::class, 'exit_seb'])
         ->name('safe_exams.exit_seb');
 
-    Route::middleware(['auth'])->group(function () {
+    $auth_middlewares = config('safe_exam.email_verification_enabled') ? ['auth', 'verified'] : ['auth'];
+    Route::middleware($auth_middlewares)->group(function () {
 
         Route::get('/', function () {
             return redirect()->route('safe_exams.index');
