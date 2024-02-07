@@ -9,3 +9,4 @@ Código fuente de la aplicación.
 - [Translatable String Exporter for Laravel](https://github.com/kkomelin/laravel-translatable-string-exporter)
 - [Cloner](https://github.com/BKWLD/cloner)
 - [PHP Domain Parser](https://github.com/jeremykendall/php-domain-parser)
+- [Laravel Lang](https://laravel-lang.com/installation.html)
