@@ -121,9 +121,11 @@ class SafeExamController extends Controller
         $xml = Str::replace("IKASGELA_URL", route('safe_exams.enter_seb', $safe_exam->classroom), $xml);
         $xml = Str::replace("IKASGELA_QUIT_PASSWORD", hash("sha256", $safe_exam->quit_password), $xml);
         $xml = Str::replace("IKASGELA_EXIT_URL", route('safe_exams.exit_seb', hash("sha256", $safe_exam->quit_password)), $xml);
-        $xml = Str::replace("SAFE_EXAM_HOST", preg_quote($this->get_domain(request()->getHost())), $xml);
+        $xml = Str::replace("SAFE_EXAM_HOST_REGEX", preg_quote($this->get_domain(request()->getHost())), $xml);
+        $xml = Str::replace("SAFE_EXAM_HOST", $this->get_domain(request()->getHost()), $xml);
         $host = parse_url($safe_exam->url, PHP_URL_HOST);
-        $xml = Str::replace("SAFE_EXAM_URL", preg_quote($this->get_domain($host)), $xml);
+        $xml = Str::replace("SAFE_EXAM_URL_REGEX", preg_quote($this->get_domain($host)), $xml);
+        $xml = Str::replace("SAFE_EXAM_URL", $this->get_domain($host), $xml);
 
         return response()->streamDownload(function () use ($xml) {
             echo $xml;

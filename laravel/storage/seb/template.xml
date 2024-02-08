@@ -1497,8 +1497,8 @@
         <false/>
         <key>whitelistURLFilter</key>
         <string>
-            ^.*?:\/\/((((SAFE_EXAM_HOST)|(.*?\.SAFE_EXAM_HOST)))|(((SAFE_EXAM_HOST)|(.*?\.SAFE_EXAM_HOST))\/.*?))(()|(\?.*?))$;
-            ^.*?:\/\/((((SAFE_EXAM_URL)|(.*?\.SAFE_EXAM_URL)))|(((SAFE_EXAM_URL)|(.*?\.SAFE_EXAM_URL))\/.*?))(()|(\?.*?))$
+            ^.*?:\/\/((((SAFE_EXAM_HOST_REGEX)|(.*?\.SAFE_EXAM_HOST_REGEX)))|(((SAFE_EXAM_HOST_REGEX)|(.*?\.SAFE_EXAM_HOST_REGEX))\/.*?))(()|(\?.*?))$;
+            ^.*?:\/\/((((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX)))|(((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX))\/.*?))(()|(\?.*?))$
         </string>
         <key>zoomMode</key>
         <integer>0</integer>
