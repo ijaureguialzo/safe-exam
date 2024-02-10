@@ -15,6 +15,7 @@ help: _header
 	@echo start-dev / start-prod
 	@echo workspace
 	@echo test
+	@echo locales
 	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
