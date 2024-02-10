@@ -18,7 +18,7 @@ MYSQL_PASSWORD=12345Abcde
 COMPOSE_PROJECT_NAME=safe-exam
 
 # Sitios web
-HTTPS_PORTAL_SITES=safe-exam.test -> http://nginx:80, phpmyadmin.safe-exam.test -> http://phpmyadmin:80,
+HTTPS_PORTAL_SITES=safe-exam.test -> http://nginx:80, www.safe-exam.test => https://safe-exam.test, phpmyadmin.safe-exam.test -> http://phpmyadmin:80,
 HTTPS_PORTAL_STAGE=local
 
 # Servidor de correo saliente en producción
