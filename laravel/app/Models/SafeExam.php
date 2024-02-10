@@ -17,4 +17,14 @@ class SafeExam extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public static function new_token()
+    {
+        return bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes')));
+    }
+
+    public static function new_quit_password()
+    {
+        return bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes')));
+    }
 }

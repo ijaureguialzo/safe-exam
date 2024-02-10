@@ -40,8 +40,8 @@ class SafeExamController extends Controller
         SafeExam::create([
             'classroom' => request('classroom'),
             'url' => request('url'),
-            'token' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes'))),
-            'quit_password' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes'))),
+            'token' => SafeExam::new_token(),
+            'quit_password' => SafeExam::new_quit_password(),
             'user_id' => Auth::user()->id,
         ]);
 
@@ -80,8 +80,8 @@ class SafeExamController extends Controller
     public function duplicate(SafeExam $safe_exam)
     {
         $clon = $safe_exam->duplicate();
-        $clon->token = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes')));
-        $clon->quit_password = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes')));
+        $clon->token = SafeExam::new_token();
+        $clon->quit_password = SafeExam::new_quit_password();
 
         $i = 1;
         while (SafeExam::where('classroom', $clon->classroom . "-" . $i)->exists()) {
@@ -96,7 +96,7 @@ class SafeExamController extends Controller
 
     public function reset_token(SafeExam $safe_exam)
     {
-        $safe_exam->token = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes')));
+        $safe_exam->token = SafeExam::new_token();
         $safe_exam->save();
 
         return back();
@@ -104,7 +104,7 @@ class SafeExamController extends Controller
 
     public function reset_quit_password(SafeExam $safe_exam)
     {
-        $safe_exam->quit_password = bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes')));
+        $safe_exam->quit_password = SafeExam::new_quit_password();
         $safe_exam->save();
 
         return back();

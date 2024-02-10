@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\SafeExam;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -23,8 +24,8 @@ class DatabaseSeeder extends Seeder
         DB::table('safe_exams')->insert([
             'classroom' => 'test',
             'url' => 'https://api.socrative.comm/fake/123456',
-            'token' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes'))),
-            'quit_password' => bin2hex(openssl_random_pseudo_bytes(config('safe_exam.quit_password_bytes'))),
+            'token' => SafeExam::new_token(),
+            'quit_password' => SafeExam::new_quit_password(),
             'user_id' => 1,
         ]);
     }
