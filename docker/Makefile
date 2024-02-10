@@ -14,6 +14,7 @@ help: _header
 	@echo start / stop / restart / stop-all
 	@echo start-dev / start-prod
 	@echo workspace
+	@echo test
 	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
@@ -67,6 +68,9 @@ stop-all:
 
 workspace:
 	@docker compose exec php /bin/bash
+
+test:
+	@docker compose exec php php artisan test
 
 locales:
 	@docker compose exec php php artisan translatable:export es

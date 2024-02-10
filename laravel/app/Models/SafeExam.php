@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Bkwld\Cloner\Cloneable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class SafeExam extends Model
 {
-    use Cloneable;
+    use Cloneable, HasFactory;
 
     protected $fillable = [
         'classroom', 'url', 'token', 'quit_password', 'user_id'
