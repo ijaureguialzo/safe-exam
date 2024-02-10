@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test',
             'email' => 'test@test.com',
             'password' => '$2y$12$kPgMZ8H33vcLyh7ICJKkr.CReGwe28EjiYz0ayScPZ.tv3Gg.htxG',   // 12345Abcde
+            'email_verified_at' => now(),
         ]);
 
         DB::table('safe_exams')->insert([
