@@ -16,6 +16,7 @@ help: _header
 	@echo workspace
 	@echo test
 	@echo locales
+	@echo outdated / update
 	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
@@ -78,6 +79,22 @@ locales:
 	@docker compose exec php php artisan translatable:inspect-translations es
 	@docker compose exec php php artisan translatable:export eu
 	@docker compose exec php php artisan translatable:inspect-translations eu
+
+outdated:
+	@echo Comprobando composer...
+	@docker compose exec php composer outdated
+	@echo Comprobando npm...
+	@docker compose exec php npm outdated
+
+update:
+	@echo Actualizando composer...
+	@docker compose exec php composer update
+	@echo Actualizando npm...
+	@docker compose exec php npm update
+	@docker compose exec php npm run build
+	@echo Generando commit...
+	@sleep 5
+	@git commit -a -m "Actualización de dependencias"
 
 build:
 	@docker compose pull && docker compose build --pull
