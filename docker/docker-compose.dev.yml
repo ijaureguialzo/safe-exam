@@ -8,6 +8,11 @@ services:
     depends_on:
       - mailcatcher
 
+  php:
+    image: safe-exam-php-dev
+    build:
+      dockerfile: Dockerfile.php.dev
+
   phpmyadmin:
     environment:
       - PMA_USER=root

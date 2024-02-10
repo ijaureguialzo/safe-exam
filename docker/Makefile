@@ -14,7 +14,7 @@ help: _header
 	@echo start / stop / restart / stop-all
 	@echo start-dev / start-prod
 	@echo workspace
-	@echo build
+	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
 	@echo clean
@@ -76,6 +76,9 @@ locales:
 
 build:
 	@docker compose pull && docker compose build --pull
+
+build-dev:
+	@docker compose pull && docker compose -f docker-compose.yml -f docker-compose.dev.yml build --pull
 
 redis-cli:
 	@docker compose exec redis redis-cli

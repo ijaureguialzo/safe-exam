@@ -51,7 +51,7 @@ services:
     hostname: php
     build:
       context: .
-      dockerfile: Dockerfile.php.dev
+      dockerfile: Dockerfile.php.prod
       args:
         - PHP_VERSION=${PHP_VERSION}
         - ALPINE_VERSION=${ALPINE_VERSION}
