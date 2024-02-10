@@ -16,7 +16,7 @@ help: _header
 	@echo workspace
 	@echo test
 	@echo locales
-	@echo outdated / update
+	@echo outdated / update / install
 	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
@@ -95,6 +95,10 @@ update:
 	@echo Generando commit...
 	@sleep 5
 	@git commit -a -m "Actualización de dependencias"
+
+install:
+	@docker compose exec php composer install
+	@docker compose exec php npm install
 
 build:
 	@docker compose pull && docker compose build --pull
