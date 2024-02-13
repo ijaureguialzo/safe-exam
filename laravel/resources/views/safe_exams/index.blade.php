@@ -64,7 +64,9 @@
                             </form>
                         </div>
                     </td>
-                    <td>{{ $safe_exam->token ?: '-' }}</td>
+                    <td>
+                        <pre class="m-0">{{ $safe_exam->token ?: '-' }}</pre>
+                    </td>
                     <td>
                         <div class="d-flex">
                             <form action="{{ route('safe_exams.reset_token', [$safe_exam->id]) }}" method="POST">
@@ -78,7 +80,9 @@
                             </form>
                         </div>
                     </td>
-                    <td>{{ $safe_exam->quit_password ?: '-' }}</td>
+                    <td>
+                        <pre class="m-0">{{ $safe_exam->quit_password ?: '-' }}</pre>
+                    </td>
                     <td>
                         <div class="d-flex">
                             <form action="{{ route('safe_exams.reset_quit_password', [$safe_exam->id]) }}"
