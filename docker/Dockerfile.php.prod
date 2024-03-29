@@ -70,6 +70,10 @@ RUN apk add --update --no-cache bash nano
 
 RUN docker-php-ext-install bcmath && docker-php-ext-enable bcmath
 
+RUN apk add --no-cache libxslt-dev \
+    && docker-php-ext-install xsl \
+    && docker-php-ext-enable xsl
+
 # Add UID '1000' to www-data
 RUN usermod -u 1000 www-data
 
