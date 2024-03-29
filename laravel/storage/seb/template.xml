@@ -370,6 +370,38 @@
                 <key>windowHandlingProcess</key>
                 <string/>
             </dict>
+            <dict>
+                <key>active</key>
+                <true/>
+                <key>allowUserToChooseApp</key>
+                <false/>
+                <key>arguments</key>
+                <array></array>
+                <key>autostart</key>
+                <false/>
+                <key>description</key>
+                <string/>
+                <key>executable</key>
+                <string>git-credential-manager.exe</string>
+                <key>iconInTaskbar</key>
+                <false/>
+                <key>identifier</key>
+                <string/>
+                <key>originalName</key>
+                <string/>
+                <key>os</key>
+                <integer>1</integer>
+                <key>path</key>
+                <string>C:\Program Files\Git\mingw64\bin</string>
+                <key>runInBackground</key>
+                <false/>
+                <key>strongKill</key>
+                <true/>
+                <key>title</key>
+                <string>git-credential-manager</string>
+                <key>windowHandlingProcess</key>
+                <string/>
+            </dict>
         </array>
         <key>pinEmbeddedCertificates</key>
         <false/>
