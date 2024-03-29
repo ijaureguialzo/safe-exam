@@ -402,6 +402,38 @@
                 <key>windowHandlingProcess</key>
                 <string/>
             </dict>
+            <dict>
+                <key>active</key>
+                <true/>
+                <key>allowUserToChooseApp</key>
+                <false/>
+                <key>arguments</key>
+                <array></array>
+                <key>autostart</key>
+                <false/>
+                <key>description</key>
+                <string/>
+                <key>executable</key>
+                <string>gitkraken.exe</string>
+                <key>iconInTaskbar</key>
+                <true/>
+                <key>identifier</key>
+                <string/>
+                <key>originalName</key>
+                <string/>
+                <key>os</key>
+                <integer>1</integer>
+                <key>path</key>
+                <string>%LOCALAPPDATA%\gitkraken</string>
+                <key>runInBackground</key>
+                <false/>
+                <key>strongKill</key>
+                <false/>
+                <key>title</key>
+                <string>gitkraken</string>
+                <key>windowHandlingProcess</key>
+                <string/>
+            </dict>
         </array>
         <key>pinEmbeddedCertificates</key>
         <false/>
