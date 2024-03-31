@@ -10,9 +10,9 @@
     <key>description</key>
     <string/>
     <key>executable</key>
-    <string>idea64.exe</string>
+    <string>SAFE_EXAM_APP_EXECUTABLE</string>
     <key>iconInTaskbar</key>
-    <true/>
+    <SAFE_EXAM_APP_ICON/>
     <key>identifier</key>
     <string/>
     <key>originalName</key>
@@ -20,13 +20,13 @@
     <key>os</key>
     <integer>1</integer>
     <key>path</key>
-    <string>%LOCALAPPDATA%\programs\intellij idea community edition\bin</string>
+    <string>SAFE_EXAM_APP_PATH</string>
     <key>runInBackground</key>
     <false/>
     <key>strongKill</key>
-    <false/>
+    <SAFE_EXAM_APP_KILL/>
     <key>title</key>
-    <string>idea64</string>
+    <string>SAFE_EXAM_APP_TITLE</string>
     <key>windowHandlingProcess</key>
     <string/>
 </dict>
