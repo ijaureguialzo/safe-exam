@@ -1,0 +1,32 @@
+<dict>
+    <key>active</key>
+    <true/>
+    <key>allowUserToChooseApp</key>
+    <false/>
+    <key>arguments</key>
+    <array></array>
+    <key>autostart</key>
+    <false/>
+    <key>description</key>
+    <string/>
+    <key>executable</key>
+    <string>jetbrains-toolbox.exe</string>
+    <key>iconInTaskbar</key>
+    <false/>
+    <key>identifier</key>
+    <string/>
+    <key>originalName</key>
+    <string/>
+    <key>os</key>
+    <integer>1</integer>
+    <key>path</key>
+    <string>%LOCALAPPDATA%\jetbrains\toolbox\bin</string>
+    <key>runInBackground</key>
+    <false/>
+    <key>strongKill</key>
+    <true/>
+    <key>title</key>
+    <string>jetbrains-toolbox</string>
+    <key>windowHandlingProcess</key>
+    <string/>
+</dict>
