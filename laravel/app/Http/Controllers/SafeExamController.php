@@ -140,6 +140,16 @@ class SafeExamController extends Controller
         }
         $xml = Str::replace("SAFE_EXAM_ALLOWED_APPS", $xml_allowed_apps, $xml);
 
+        $xml_allowed_urls = '';
+        foreach ($safe_exam->allowed_urls()->get() as $url) {
+            $xml_fragment = file_get_contents($ruta . "/allowed_url_filter_template.xml");
+
+            $xml_fragment = Str::replace("SAFE_EXAM_URL", $url->url, $xml_fragment);
+
+            $xml_allowed_urls .= $xml_fragment;
+        }
+        $xml = Str::replace("SAFE_EXAM_ALLOWED_URLS", $xml_allowed_urls, $xml);
+
         return response()->streamDownload(function () use ($xml) {
             echo $xml;
         }, 'config.seb');
