@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\SafeExam;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,6 +23,7 @@ class AllowedAppFactory extends Factory
             'path' => fake()->word(),
             'show_icon' => fake()->boolean(),
             'force_close' => fake()->boolean(),
+            'safe_exam_id' => SafeExam::factory()->create(),
         ];
     }
 }

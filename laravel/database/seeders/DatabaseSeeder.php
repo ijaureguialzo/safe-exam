@@ -34,7 +34,8 @@ class DatabaseSeeder extends Seeder
             'executable' => 'idea64.exe',
             'path' => '%LOCALAPPDATA%\programs\intellij idea community edition\bin',
             'show_icon' => true,
-            'force_close' => false, // renombrarlo
+            'force_close' => false,
+            'safe_exam_id' => 1,
         ]);
     }
 }
