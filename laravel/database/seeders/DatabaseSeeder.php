@@ -28,5 +28,13 @@ class DatabaseSeeder extends Seeder
             'quit_password' => SafeExam::new_quit_password(),
             'user_id' => 1,
         ]);
+
+        DB::table('allowed_apps')->insert([
+            'title' => 'idea64',
+            'executable' => 'idea64.exe',
+            'path' => '%LOCALAPPDATA%\programs\intellij idea community edition\bin',
+            'show_icon' => true,
+            'force_close' => false, // renombrarlo
+        ]);
     }
 }
