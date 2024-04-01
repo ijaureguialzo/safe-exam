@@ -24,6 +24,11 @@ class SafeExam extends Model
         return $this->hasMany(AllowedApp::class);
     }
 
+    public function allowed_urls()
+    {
+        return $this->hasMany(AllowedUrl::class);
+    }
+
     public static function new_token()
     {
         return bin2hex(openssl_random_pseudo_bytes(config('safe_exam.token_bytes')));

@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\AllowedApp;
+use App\Models\AllowedUrl;
 use App\Models\SafeExam;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -63,6 +64,26 @@ class DatabaseSeeder extends Seeder
             'path' => '%LOCALAPPDATA%\gitkraken',
             'show_icon' => true,
             'force_close' => false,
+            'safe_exam_id' => $safe_exam->id,
+        ]);
+
+        AllowedUrl::create([
+            'url' => 'jetbrains://*',
+            'safe_exam_id' => $safe_exam->id,
+        ]);
+
+        AllowedUrl::create([
+            'url' => 'gitkraken://*',
+            'safe_exam_id' => $safe_exam->id,
+        ]);
+
+        AllowedUrl::create([
+            'url' => 's3.eu-west-1.amazonaws.com/ficheros.ikasgela.com/*',
+            'safe_exam_id' => $safe_exam->id,
+        ]);
+
+        AllowedUrl::create([
+            'url' => 'wikipedia.org',
             'safe_exam_id' => $safe_exam->id,
         ]);
     }
