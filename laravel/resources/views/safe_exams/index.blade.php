@@ -108,9 +108,8 @@
         </table>
     </div>
 
-    <div class="mt-5">
+    <div>
         <a href="{{ route('safe_exams.create') }}"
-           title="{{ __('New classroom') }}"
            class="btn btn-primary" role="button">
             {{ __('New classroom') }}
         </a>
