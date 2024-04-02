@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         AllowedApp::create([
-            'title' => 'idea64',
+            'title' => 'IntelliJ IDEA',
             'executable' => 'idea64.exe',
             'path' => '%LOCALAPPDATA%\programs\intellij idea community edition\bin',
             'show_icon' => true,
@@ -41,7 +41,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         AllowedApp::create([
-            'title' => 'jetbrains-toolbox',
+            'title' => 'JetBrains Toolbox',
             'executable' => 'jetbrains-toolbox.exe',
             'path' => '%LOCALAPPDATA%\jetbrains\toolbox\bin',
             'show_icon' => false,
@@ -50,16 +50,25 @@ class DatabaseSeeder extends Seeder
         ]);
 
         AllowedApp::create([
-            'title' => 'git-credential-manager',
+            'title' => 'Git Credential Manager (admin)',
             'executable' => 'git-credential-manager.exe',
-            'path' => 'C:\Program Files\Git\mingw64\bin',
+            'path' => '%PROGRAMFILES%\Git\mingw64\bin',
             'show_icon' => false,
             'force_close' => true,
             'safe_exam_id' => $safe_exam->id,
         ]);
 
         AllowedApp::create([
-            'title' => 'gitkraken',
+            'title' => 'Git Credential Manager (user)',
+            'executable' => 'git-credential-manager.exe',
+            'path' => '%LOCALAPPDATA%\Programs\Git\mingw64\bin',
+            'show_icon' => false,
+            'force_close' => true,
+            'safe_exam_id' => $safe_exam->id,
+        ]);
+
+        AllowedApp::create([
+            'title' => 'GitKraken',
             'executable' => 'gitkraken.exe',
             'path' => '%LOCALAPPDATA%\gitkraken',
             'show_icon' => true,
