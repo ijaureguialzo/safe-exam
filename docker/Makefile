@@ -76,9 +76,10 @@ test:
 
 locales:
 	@docker compose exec php php artisan translatable:export es
-	@docker compose exec php php artisan translatable:inspect-translations es
 	@docker compose exec php php artisan translatable:export eu
-	@docker compose exec php php artisan translatable:inspect-translations eu
+	@docker compose exec php php artisan lang:update
+	@-docker compose exec php php artisan translatable:inspect-translations es
+	@-docker compose exec php php artisan translatable:inspect-translations eu
 
 outdated:
 	@echo Comprobando composer...
