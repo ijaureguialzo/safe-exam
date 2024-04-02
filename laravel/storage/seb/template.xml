@@ -1502,9 +1502,7 @@
         <string>
             ^.*?:\/\/((((SAFE_EXAM_HOST_REGEX)|(.*?\.SAFE_EXAM_HOST_REGEX)))|(((SAFE_EXAM_HOST_REGEX)|(.*?\.SAFE_EXAM_HOST_REGEX))\/.*?))(()|(\?.*?))$;
             ^.*?:\/\/((((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX)))|(((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX))\/.*?))(()|(\?.*?))$;
-            ^jetbrains:\/\/((((.*?)|(.*?\..*?)))|(((.*?)|(.*?\..*?))\/.*?))(()|(\?.*?))$;
-            ^gitkraken:\/\/((((.*?)|(.*?\..*?)))|(((.*?)|(.*?\..*?))\/.*?))(()|(\?.*?))$;
-            ^.*?:\/\/((s3\.eu-west-1\.amazonaws\.com)|(.*?\.s3\.eu-west-1\.amazonaws\.com))\/((/ficheros\.ikasgela\.com/.*?)|(/ficheros\.ikasgela\.com/.*?))(()|(\?.*?))$
+            SAFE_EXAM_ALLOWED_URLS_REGEX
         </string>
         <key>zoomMode</key>
         <integer>0</integer>

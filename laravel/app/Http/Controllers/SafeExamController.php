@@ -140,6 +140,35 @@ class SafeExamController extends Controller
         }
         $xml = Str::replace("SAFE_EXAM_ALLOWED_APPS", $xml_allowed_apps, $xml);
 
+        $xml_allowed_urls_regex = '';
+        foreach ($safe_exam->allowed_urls()->get() as $url) {
+            $protocol = parse_url($url->url, PHP_URL_SCHEME);
+            $host = parse_url($url->url, PHP_URL_HOST);
+            $path = parse_url($url->url, PHP_URL_PATH);
+
+            $path = Str::replaceStart('/', '', $path);
+            $path = Str::replaceEnd('/*', '', $path);
+
+            if (!empty($protocol) && !Str::startsWith($protocol, 'http') && $host == '*') {
+                // app://*
+                $regex_template = '^PROTOCOL:\/\/((((.*?)|(.*?\..*?)))|(((.*?)|(.*?\..*?))\/.*?))(()|(\?.*?))$;';
+                $regex_template = Str::replace("PROTOCOL", $protocol, $regex_template);
+                $xml_allowed_urls_regex .= $regex_template;
+            } else if (!empty($host) && !empty($path)) {
+                // https://host/path/*
+                $regex_template = '^.*?:\/\/((HOST)|(.*?\.HOST))\/((PATH.*?)|(PATH.*?))(()|(\?.*?))$;';
+                $regex_template = Str::replace("HOST", preg_quote($host), $regex_template);
+                $regex_template = Str::replace("PATH", preg_quote($path), $regex_template);
+                $xml_allowed_urls_regex .= $regex_template;
+            } else if (!empty($host)) {
+                // https://host/*
+                $regex_template = '^.*?:\/\/((((HOST)|(.*?\.HOST)))|(((HOST)|(.*?\.HOST))\/.*?))(()|(\?.*?))$;';
+                $regex_template = Str::replace("HOST", preg_quote($host), $regex_template);
+                $xml_allowed_urls_regex .= $regex_template;
+            }
+        }
+        $xml = Str::replace("SAFE_EXAM_ALLOWED_URLS_REGEX", $xml_allowed_urls_regex, $xml);
+
         $xml_allowed_urls = '';
         foreach ($safe_exam->allowed_urls()->get() as $url) {
             $xml_fragment = file_get_contents($ruta . "/allowed_url_filter_template.xml");

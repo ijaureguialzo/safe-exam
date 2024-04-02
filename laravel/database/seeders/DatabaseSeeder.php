@@ -78,12 +78,7 @@ class DatabaseSeeder extends Seeder
         ]);
 
         AllowedUrl::create([
-            'url' => 's3.eu-west-1.amazonaws.com/ficheros.ikasgela.com/*',
-            'safe_exam_id' => $safe_exam->id,
-        ]);
-
-        AllowedUrl::create([
-            'url' => 'wikipedia.org',
+            'url' => 'https://es.wikipedia.org',
             'safe_exam_id' => $safe_exam->id,
         ]);
     }
