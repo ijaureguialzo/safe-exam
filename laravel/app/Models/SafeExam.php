@@ -14,6 +14,10 @@ class SafeExam extends Model
         'classroom', 'url', 'token', 'quit_password', 'user_id'
     ];
 
+    protected $cloneable_relations = [
+        'allowed_apps', 'allowed_urls',
+    ];
+
     public function user()
     {
         return $this->belongsTo(User::class);
