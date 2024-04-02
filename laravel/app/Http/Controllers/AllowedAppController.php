@@ -3,63 +3,77 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllowedApp;
+use App\Models\SafeExam;
 use Illuminate\Http\Request;
 
 class AllowedAppController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(SafeExam $safe_exam)
     {
-        //
+        return view('allowed_apps.create', compact('safe_exam'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'executable' => 'required|max:255',
+            'path' => 'required|max:255',
+        ]);
+
+        $allowed_app = AllowedApp::create([
+            'title' => request('title'),
+            'executable' => request('executable'),
+            'path' => request('path'),
+            'show_icon' => request()->has('show_icon'),
+            'force_close' => request()->has('force_close'),
+            'safe_exam_id' => request('safe_exam_id'),
+        ]);
+
+        return redirect(route('safe_exams.allowed', [$allowed_app->safe_exam->id]));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(AllowedApp $allowedApp)
+    public function edit(AllowedApp $allowed_app)
     {
-        //
+        return view('allowed_apps.edit', compact('allowed_app'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AllowedApp $allowedApp)
+    public function update(Request $request, AllowedApp $allowed_app)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required|max:255',
+            'executable' => 'required|max:255',
+            'path' => 'required|max:255',
+        ]);
+
+        $allowed_app->update([
+            'title' => request('title'),
+            'executable' => request('executable'),
+            'path' => request('path'),
+            'show_icon' => request()->has('show_icon'),
+            'force_close' => request()->has('force_close'),
+        ]);
+
+        return redirect(route('safe_exams.allowed', [$allowed_app->safe_exam->id]));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, AllowedApp $allowedApp)
+    public function destroy(AllowedApp $allowed_app)
     {
-        //
+        $allowed_app->delete();
+
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AllowedApp $allowedApp)
+    public function duplicate(AllowedApp $allowed_app)
     {
-        //
+        $clon = $allowed_app->duplicate();
+        $clon->save();
+
+        return back();
     }
 }

@@ -3,63 +3,65 @@
 namespace App\Http\Controllers;
 
 use App\Models\AllowedUrl;
+use App\Models\SafeExam;
 use Illuminate\Http\Request;
 
 class AllowedUrlController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function __construct()
     {
-        //
+        $this->middleware('auth');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
+    public function create(SafeExam $safe_exam)
     {
-        //
+        return view('allowed_urls.create', compact('safe_exam'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'url' => 'required|max:255',
+        ]);
+
+        $allowed_url = AllowedUrl::create([
+            'url' => request('url'),
+            'safe_exam_id' => request('safe_exam_id'),
+        ]);
+
+        return redirect(route('safe_exams.allowed', [$allowed_url->safe_exam->id]));
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(AllowedUrl $allowedUrl)
+    public function edit(AllowedUrl $allowed_url)
     {
-        //
+        return view('allowed_urls.edit', compact('allowed_url'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(AllowedUrl $allowedUrl)
+    public function update(Request $request, AllowedUrl $allowed_url)
     {
-        //
+        $this->validate($request, [
+            'url' => 'required|max:255',
+        ]);
+
+        $allowed_url->update([
+            'url' => request('url'),
+        ]);
+
+        return redirect(route('safe_exams.allowed', [$allowed_url->safe_exam->id]));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, AllowedUrl $allowedUrl)
+    public function destroy(AllowedUrl $allowed_url)
     {
-        //
+        $allowed_url->delete();
+
+        return back();
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(AllowedUrl $allowedUrl)
+    public function duplicate(AllowedUrl $allowed_url)
     {
-        //
+        $clon = $allowed_url->duplicate();
+        $clon->save();
+
+        return back();
     }
 }

@@ -43,6 +43,11 @@
                                class="btn btn-sm btn-secondary me-2" role="button">
                                 <i class="bi bi-pencil"></i>
                             </a>
+                            <a href="{{ route('safe_exams.allowed', [$safe_exam->id]) }}"
+                               title="{{ __('Allowed apps and URLs') }}"
+                               class="btn btn-sm btn-secondary me-2" role="button">
+                                <i class="bi bi-shield-check"></i>
+                            </a>
                             <form action="{{ route('safe_exams.duplicate', [$safe_exam->id]) }}" method="POST">
                                 @csrf
                                 <button title="{{ __('Duplicate classroom') }}"

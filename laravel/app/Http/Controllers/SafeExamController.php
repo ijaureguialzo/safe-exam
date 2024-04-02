@@ -209,4 +209,9 @@ class SafeExamController extends Controller
         $publicSuffixList = Rules::fromPath($ruta . '/public_suffix_list.dat.txt');
         return $publicSuffixList->resolve($host)->registrableDomain()->toString();
     }
+
+    public function allowed(SafeExam $safe_exam)
+    {
+        return view('safe_exams.allowed', compact('safe_exam'));
+    }
 }
