@@ -4,7 +4,7 @@
 
     @include('partials.titular', ['titular' => __('Allowed apps and URLs'), 'subtitulo' => $safe_exam->classroom])
 
-    <h2>Allowed apps</h2>
+    <h2>{{ __('Allowed apps') }}</h2>
 
     <div class="table-responsive">
         <table class="table align-middle table-hover">
@@ -67,7 +67,7 @@
         </a>
     </div>
 
-    <h2 class="mt-5">Allowed URLs</h2>
+    <h2 class="mt-5">{{ __('Allowed URLs') }}</h2>
 
     <div class="table-responsive">
         <table class="table align-middle table-hover">
