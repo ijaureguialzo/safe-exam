@@ -61,7 +61,7 @@
         <key>allowVideoCapture</key>
         <false/>
         <key>allowVirtualMachine</key>
-        <false/>
+        <true/>
         <key>allowWlan</key>
         <false/>
         <key>audioControlEnabled</key>
@@ -305,7 +305,9 @@
         <key>oskBehavior</key>
         <integer>2</integer>
         <key>permittedProcesses</key>
-        <array></array>
+        <array>
+            SAFE_EXAM_ALLOWED_APPS
+        </array>
         <key>pinEmbeddedCertificates</key>
         <false/>
         <key>prohibitedProcesses</key>
@@ -1488,6 +1490,7 @@
                 <key>action</key>
                 <integer>1</integer>
             </dict>
+            SAFE_EXAM_ALLOWED_URLS
         </array>
         <key>urlFilterTrustedContent</key>
         <true/>
@@ -1498,7 +1501,8 @@
         <key>whitelistURLFilter</key>
         <string>
             ^.*?:\/\/((((SAFE_EXAM_HOST_REGEX)|(.*?\.SAFE_EXAM_HOST_REGEX)))|(((SAFE_EXAM_HOST_REGEX)|(.*?\.SAFE_EXAM_HOST_REGEX))\/.*?))(()|(\?.*?))$;
-            ^.*?:\/\/((((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX)))|(((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX))\/.*?))(()|(\?.*?))$
+            ^.*?:\/\/((((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX)))|(((SAFE_EXAM_URL_REGEX)|(.*?\.SAFE_EXAM_URL_REGEX))\/.*?))(()|(\?.*?))$;
+            SAFE_EXAM_ALLOWED_URLS_REGEX
         </string>
         <key>zoomMode</key>
         <integer>0</integer>

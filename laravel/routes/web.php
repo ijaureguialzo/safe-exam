@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\AllowedAppController;
+use App\Http\Controllers\AllowedUrlController;
 use App\Http\Controllers\SafeExamController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -52,5 +54,34 @@ Route::group(['prefix' => LaravelLocalization::setLocale()], function () {
             ->name('safe_exams.destroy');
         Route::post('/safe_exams/{safe_exam}/duplicate', [SafeExamController::class, 'duplicate'])
             ->name('safe_exams.duplicate');
+
+        Route::get('/safe_exams/{safe_exam}/allowed', [SafeExamController::class, 'allowed'])
+            ->name('safe_exams.allowed');
+
+        Route::get('/allowed_apps/{safe_exam}/create', [AllowedAppController::class, 'create'])
+            ->name('allowed_apps.create');
+        Route::post('/allowed_apps', [AllowedAppController::class, 'store'])
+            ->name('allowed_apps.store');
+        Route::get('/allowed_apps/{allowed_app}/edit', [AllowedAppController::class, 'edit'])
+            ->name('allowed_apps.edit');
+        Route::put('/allowed_apps/{allowed_app}', [AllowedAppController::class, 'update'])
+            ->name('allowed_apps.update');
+        Route::delete('/allowed_apps/{allowed_app}', [AllowedAppController::class, 'destroy'])
+            ->name('allowed_apps.destroy');
+        Route::post('/allowed_apps/{allowed_app}/duplicate', [AllowedAppController::class, 'duplicate'])
+            ->name('allowed_apps.duplicate');
+
+        Route::get('/allowed_urls/{safe_exam}/create', [AllowedUrlController::class, 'create'])
+            ->name('allowed_urls.create');
+        Route::post('/allowed_urls', [AllowedUrlController::class, 'store'])
+            ->name('allowed_urls.store');
+        Route::get('/allowed_urls/{allowed_url}/edit', [AllowedUrlController::class, 'edit'])
+            ->name('allowed_urls.edit');
+        Route::put('/allowed_urls/{allowed_url}', [AllowedUrlController::class, 'update'])
+            ->name('allowed_urls.update');
+        Route::delete('/allowed_urls/{allowed_url}', [AllowedUrlController::class, 'destroy'])
+            ->name('allowed_urls.destroy');
+        Route::post('/allowed_urls/{allowed_url}/duplicate', [AllowedUrlController::class, 'duplicate'])
+            ->name('allowed_urls.duplicate');
     });
 });
