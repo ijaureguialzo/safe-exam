@@ -10,18 +10,19 @@ endif
 help: _header
 	${info }
 	@echo Opciones:
-	@echo ---------------------------------
+	@echo ------------------------------------------
 	@echo start / stop / restart / stop-all
 	@echo start-dev / start-prod
-	@echo workspace
+	@echo workspace / workspace-root
 	@echo test
+	@echo seed
 	@echo locales
-	@echo outdated / update / install
+	@echo outdated / update / install / install-prod
 	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
 	@echo clean
-	@echo --------------------------------------------------------
+	@echo ------------------------------------------
 
 _urls: _header
 	${info }
@@ -58,7 +59,7 @@ start: _start-command _urls
 
 start-dev: _start-command-dev _urls-dev
 
-start-prod: _start-command-prod _urls
+start-prod: _start-command-prod install-prod _urls
 
 stop:
 	@docker compose stop
@@ -71,8 +72,14 @@ stop-all:
 workspace:
 	@docker compose exec php /bin/bash
 
+workspace-root:
+	@docker compose exec --user root php /bin/bash
+
 test:
 	@docker compose exec php php artisan test
+
+seed:
+	@docker compose exec php php artisan migrate:fresh --seed
 
 locales:
 	@docker compose exec php php artisan translatable:export es
@@ -100,6 +107,12 @@ update:
 install:
 	@docker compose exec php composer install
 	@docker compose exec php npm install
+	@docker compose exec php npm run build
+
+install-prod:
+	@docker compose exec php composer install --no-dev
+	@docker compose exec php npm install
+	@docker compose exec php npm run build
 
 build:
 	@docker compose pull && docker compose build --pull
