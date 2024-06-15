@@ -2,7 +2,7 @@
 @php($debug_navbar_color = config('app.debug') ? 'navbar-light bg-warning' : 'navbar-dark bg-dark')
 
 <nav class="navbar navbar-expand-md {{ $debug_navbar_color }} shadow-sm">
-    <a class="navbar-brand text-{{ $debug_text_color }} m-0 text-start ps-3 text-md-center ps-md-0"
+    <a class="navbar-brand text-{{ $debug_text_color }} m-0 text-start ps-3 text-md-center ps-md-0 hover-link"
        style="width: 15rem;"
        href="{{ route('home') }}">
         {{ config('app.name', 'Laravel') }}
