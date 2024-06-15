@@ -1,5 +1,5 @@
 @php($debug_text_color = config('app.debug') ? 'dark' : 'light')
-@php($debug_navbar_color = config('app.debug') ? 'navbar-light bg-warning' : 'navbar-dark bg-primary')
+@php($debug_navbar_color = config('app.debug') ? 'navbar-light bg-warning' : 'navbar-dark bg-dark')
 
 <nav class="navbar navbar-expand-md {{ $debug_navbar_color }} shadow-sm">
     <a class="navbar-brand text-{{ $debug_text_color }} m-0 text-start ps-3 text-md-center ps-md-0"
