@@ -38,7 +38,7 @@ _urls-dev: _header
 	@echo ------------------------------------------------
 	@echo [Sitio web] https://safe-exam.test
 	@echo [phpMyAdmin] https://phpmyadmin.safe-exam.test
-	@echo [MailCatcher] https://mailcatcher.safe-exam.test
+	@echo [Mailpit] https://mailpit.safe-exam.test
 	@echo ------------------------------------------------
 
 _header:
