@@ -2,6 +2,10 @@
 
 return [
 
+    'registration_enabled' => env('SAFE_EXAM_REGISTRATION_ENABLED', false),
+    'password_reset_enabled' => env('SAFE_EXAM_PASSWORD_RESET_ENABLED', false),
+    'email_verification_enabled' => env('SAFE_EXAM_EMAIL_VERIFICATION_ENABLED', false),
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Defaults
