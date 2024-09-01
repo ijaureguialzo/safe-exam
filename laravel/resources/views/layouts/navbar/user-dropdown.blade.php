@@ -1,8 +1,9 @@
-<li class="nav-item dropdown">
+<li class="nav-item dropdown d-flex align-items-center">
     <a id="navbarDropdown"
-       class="nav-link dropdown-toggle text-{{ $debug_text_color }} hover-background" href="#"
+       class="nav-link dropdown-toggle text-{{ $debug_text_color }} hover-background d-flex align-items-center rounded"
+       href="#"
        role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ Auth::user()->name }}
+        <span class="me-1">{{ Auth::user()->name }}</span>
     </a>
     <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
         <a class="dropdown-item hover-link" href="{{ route('logout') }}"
