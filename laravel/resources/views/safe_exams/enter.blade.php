@@ -12,10 +12,18 @@
             @else
                 <a class="btn btn-primary d-block py-5 mb-4 fs-2"
                    href="{{ $sebs_url }}">{{ __('Click here to open Safe Exam Browser') }}</a>
-                <p class="small">{{__('If the button doesn\'t work, you will have to')}} <a
-                        class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover"
-                        target="_blank"
-                        href="https://safeexambrowser.org/download_en.html">{{ __('download and install Safe Exam Browser') }}</a>.
+                <p class="small">
+                    {{ __('If the button doesn\'t work, you will have to') }}
+                    {{ __('download and install Safe Exam Browser') }}.
+                </p>
+                <p class="small">{{ __('Download it here') }}:
+                    <a class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover"
+                       target="_blank"
+                       href="{{ asset('/seb/SEB_SetupBundle.exe') }}">Windows</a>
+                    <span>|</span>
+                    <a class="link-primary link-underline-opacity-0 link-underline-opacity-100-hover"
+                       target="_blank"
+                       href="{{ asset('/seb/SafeExamBrowser.dmg') }}">macOS</a>
                 </p>
             @endif
         </div>
