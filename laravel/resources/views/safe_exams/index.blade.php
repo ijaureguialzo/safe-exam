@@ -38,6 +38,11 @@
                                     class="btn btn-sm btn-primary me-2">
                                 <i class="bi bi-clipboard"></i>
                             </button>
+                            <a href="{{ route('safe_exams.config_seb', [$safe_exam->id]) }}"
+                               title="{{ __('Download SEB configuration file') }}"
+                               class="btn btn-sm btn-secondary me-2" role="button">
+                                <i class="bi bi-download"></i>
+                            </a>
                             <a href="{{ route('safe_exams.edit', [$safe_exam->id]) }}"
                                title="{{ __('Edit classroom') }}"
                                class="btn btn-sm btn-secondary me-2" role="button">
