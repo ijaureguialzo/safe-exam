@@ -23,3 +23,10 @@ HTTPS_PORTAL_STAGE=local
 
 # Servidor de correo saliente en producción
 POSTFIX_ALLOWED_SENDER_DOMAINS=safe-exam.test
+
+# Configuración de Traefik
+NETWORK_NAME=traefik-network
+
+FQDN_SAFE_EXAM=safe-exam.test
+FQDN_PHPMYADMIN=phpmyadmin.safe-exam.test
+FQDN_MAILPIT=mailpit.safe-exam.test

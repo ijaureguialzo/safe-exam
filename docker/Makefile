@@ -12,12 +12,14 @@ help: _header
 	@echo Opciones:
 	@echo ------------------------------------------
 	@echo start / stop / restart / stop-all
-	@echo start-dev / start-prod
+	@echo start / start-dev
+	@echo start-traefik / start-dev-traefik
+	@echo install / install-dev
 	@echo workspace / workspace-root
 	@echo test
 	@echo seed
 	@echo locales
-	@echo outdated / update / install / install-prod
+	@echo outdated / update
 	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
@@ -47,19 +49,24 @@ _header:
 	@echo ---------
 
 _start-command:
-	@docker compose up -d --remove-orphans
+	@docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
 
 _start-command-dev:
 	@docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --remove-orphans
 
-_start-command-prod:
-	@docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
+_start-command-traefik:
+	@docker compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.traefik.prod.yml up -d --remove-orphans nginx phpmyadmin postfix
+
+_start-command-dev-traefik:
+	@docker compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.traefik.dev.yml up -d --remove-orphans nginx phpmyadmin mailpit
 
 start: _start-command _urls
 
 start-dev: _start-command-dev _urls-dev
 
-start-prod: _start-command-prod install-prod _urls
+start-traefik: _start-command-traefik _urls
+
+start-dev-traefik: _start-command-dev-traefik _urls-dev
 
 stop:
 	@docker compose stop
@@ -105,12 +112,12 @@ update:
 	@git commit -a -m "Actualización de dependencias"
 
 install:
-	@docker compose exec php composer install
+	@docker compose exec php composer install --no-dev
 	@docker compose exec php npm install
 	@docker compose exec php npm run build
 
-install-prod:
-	@docker compose exec php composer install --no-dev
+install-dev:
+	@docker compose exec php composer install
 	@docker compose exec php npm install
 	@docker compose exec php npm run build
 
