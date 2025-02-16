@@ -1,18 +1,21 @@
 services:
   nginx:
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.safe-exam.rule=Host(`${FQDN_SAFE_EXAM:-safe-exam.test}`)"
       - "traefik.http.routers.safe-exam.entrypoints=websecure"
       - "traefik.http.routers.safe-exam.tls=true"
 
   phpmyadmin:
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.safe-exam-phpmyadmin.rule=Host(`${FQDN_PHPMYADMIN:-phpmyadmin.safe-exam.test}`)"
       - "traefik.http.routers.safe-exam-phpmyadmin.entrypoints=websecure"
       - "traefik.http.routers.safe-exam-phpmyadmin.tls=true"
 
   mailpit:
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.safe-exam-mailpit.rule=Host(`${FQDN_MAILPIT:-mailpit.safe-exam.test}`)"
       - "traefik.http.routers.safe-exam-mailpit.entrypoints=websecure"
       - "traefik.http.routers.safe-exam-mailpit.tls=true"
