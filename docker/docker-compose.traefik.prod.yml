@@ -5,6 +5,7 @@ services:
       - "traefik.http.routers.safe-exam.rule=Host(`${FQDN_SAFE_EXAM:-safe-exam.test}`)"
       - "traefik.http.routers.safe-exam.entrypoints=websecure"
       - "traefik.http.routers.safe-exam.tls=true"
+      - "traefik.http.services.safe-exam.loadbalancer.server.port=80"
 
   phpmyadmin:
     labels:
@@ -12,6 +13,7 @@ services:
       - "traefik.http.routers.safe-exam-phpmyadmin.rule=Host(`${FQDN_PHPMYADMIN:-phpmyadmin.safe-exam.test}`)"
       - "traefik.http.routers.safe-exam-phpmyadmin.entrypoints=websecure"
       - "traefik.http.routers.safe-exam-phpmyadmin.tls=true"
+      - "traefik.http.services.safe-exam-phpmyadmin.loadbalancer.server.port=80"
 
 networks:
   default:
