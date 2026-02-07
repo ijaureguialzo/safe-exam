@@ -8,8 +8,8 @@
 
     <div class="table-responsive">
         <table class="table align-middle table-hover">
-            <thead>
-            <tr class="table-dark">
+            <thead class="thead-dark">
+            <tr>
                 <th>{{ __('Title') }}</th>
                 <th>{{ __('Executable') }}</th>
                 <th>{{ __('Path') }}</th>
@@ -72,8 +72,8 @@
 
     <div class="table-responsive">
         <table class="table align-middle table-hover">
-            <thead>
-            <tr class="table-dark">
+            <thead class="thead-dark">
+            <tr>
                 <th>{{ __('URL') }}</th>
                 <th></th>
             </tr>

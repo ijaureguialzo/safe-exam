@@ -8,8 +8,8 @@
 
     <div class="table-responsive">
         <table class="table align-middle table-hover">
-            <thead>
-            <tr class="table-dark">
+            <thead class="thead-dark">
+            <tr>
                 <th>{{ __('Classroom') }}</th>
                 <th colspan="2">{{ __('URL') }}</th>
                 <th colspan="2">{{ __('Token') }}</th>
