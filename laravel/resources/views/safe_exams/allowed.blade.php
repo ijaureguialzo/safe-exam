@@ -47,7 +47,8 @@
                                 @method('DELETE')
                                 <button title="{{ __('Delete allowed app') }}"
                                         name="delete_classroom"
-                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
+                                        type="submit"
+                                        onclick="single_click_confirmar(event, this, '{{__('Confirmation needed')}}', '{{__('Are you sure?')}}', '{{__('Confirm')}}', '{{__('Cancel')}}');"
                                         class="btn btn-sm btn-danger">
                                     <i class="bi bi-trash"></i>
                                 </button>
@@ -102,7 +103,8 @@
                                 @method('DELETE')
                                 <button title="{{ __('Delete allowed URL') }}"
                                         name="delete_classroom"
-                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
+                                        type="submit"
+                                        onclick="single_click_confirmar(event, this, '{{__('Confirmation needed')}}', '{{__('Are you sure?')}}', '{{__('Confirm')}}', '{{__('Cancel')}}');"
                                         class="btn btn-sm btn-danger">
                                     <i class="bi bi-trash"></i>
                                 </button>

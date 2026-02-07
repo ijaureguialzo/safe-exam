@@ -60,7 +60,8 @@
                                 @method('DELETE')
                                 <button title="{{ __('Delete classroom') }}"
                                         name="delete_classroom"
-                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
+                                        type="submit"
+                                        onclick="single_click_confirmar(event, this, '{{__('Confirmation needed')}}', '{{__('Are you sure?')}}', '{{__('Confirm')}}', '{{__('Cancel')}}');"
                                         class="btn btn-sm btn-danger">
                                     <i class="bi bi-trash"></i>
                                 </button>
@@ -76,7 +77,8 @@
                                 @csrf
                                 <button title="{{ __('Reset token') }}"
                                         name="reset_token"
-                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
+                                        type="submit"
+                                        onclick="single_click_confirmar(event, this, '{{__('Confirmation needed')}}', '{{__('Are you sure?')}}', '{{__('Confirm')}}', '{{__('Cancel')}}');"
                                         class="btn btn-sm btn-danger">
                                     <i class="bi bi-arrow-clockwise"></i>
                                 </button>
@@ -93,7 +95,8 @@
                                 @csrf
                                 <button title="{{ __('Reset quit password') }}"
                                         name="reset_quit_password"
-                                        type="submit" onclick="return confirm('{{ __('Are you sure?') }}')"
+                                        type="submit"
+                                        onclick="single_click_confirmar(event, this, '{{__('Confirmation needed')}}', '{{__('Are you sure?')}}', '{{__('Confirm')}}', '{{__('Cancel')}}');"
                                         class="btn btn-sm btn-danger">
                                     <i class="bi bi-arrow-clockwise"></i>
                                 </button>

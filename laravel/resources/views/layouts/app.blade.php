@@ -6,6 +6,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>{{ config('app.name', 'Laravel') }}</title>
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+    <script src="{{ asset('build/js/single_click.js') }}"></script>
 </head>
 <body class="d-flex flex-column h-100">
 

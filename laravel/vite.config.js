@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 export default defineConfig({
     plugins: [
@@ -9,6 +10,15 @@ export default defineConfig({
                 'resources/js/app.js',
             ],
             refresh: true,
+        }),
+        viteStaticCopy({
+            targets: [
+                // Single click script
+                {
+                    src: 'resources/js/single_click.js',
+                    dest: 'js'
+                },
+            ]
         }),
     ],
 });
