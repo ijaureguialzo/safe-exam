@@ -4,14 +4,7 @@
 
     @include('partials.titular', ['titular' => __('Your classrooms'), 'subtitulo' => ''])
 
-    <script>
-        function copyToClipboard(text) {
-            navigator.clipboard.writeText(text).then(
-                function () {
-                    alert("{{ __('Link copied') }}.");
-                });
-        }
-    </script>
+    @include('partials.copiar-enlace')
 
     <div class="table-responsive">
         <table class="table align-middle table-hover">
@@ -34,7 +27,7 @@
                             <button title="{{ __('Copy the safe classroom link to clipboard') }}"
                                     name="copy_link"
                                     type="button"
-                                    onclick="copyToClipboard('{{ 'https://' . request()->getHost() . '/classroom/' . $safe_exam->classroom }}')"
+                                    onclick="copyToClipboard(this, '{{ 'https://' . request()->getHost() . '/classroom/' . $safe_exam->classroom }}')"
                                     class="btn btn-sm btn-primary me-2">
                                 <i class="bi bi-clipboard"></i>
                             </button>
