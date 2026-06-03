@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
-use Jenssegers\Agent\Facades\Agent;
 use Pdp\Rules;
 
 class SafeExamController extends Controller
@@ -188,7 +187,7 @@ class SafeExamController extends Controller
     {
         $safe_exam = SafeExam::where('classroom', request('classroom'))->firstOrFail();
 
-        $seb_session = Str::contains(Agent::getUserAgent(), "SEB/ikasgela (" . $safe_exam->token . ")");
+        $seb_session = Str::contains($request->userAgent(), "SEB/ikasgela (" . $safe_exam->token . ")");
 
         $sebs_url = route('safe_exams.config_seb', $safe_exam);
         $sebs_url = Str::replace("http", "seb", $sebs_url);
