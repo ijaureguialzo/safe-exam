@@ -11,16 +11,16 @@ help: _header
 	${info }
 	@echo Opciones:
 	@echo ------------------------------------------
-	@echo start / stop / restart / stop-all
+	@echo build / build-dev
 	@echo start / start-dev
-	@echo start-traefik / start-dev-traefik
 	@echo install / install-dev
+	@echo seed
+	@echo stop / stop-dev
+	@echo ------------------------------------------
 	@echo workspace / workspace-root
 	@echo test
-	@echo seed
 	@echo locales
 	@echo outdated / update
-	@echo build / build-dev
 	@echo redis-cli / redis-flush
 	@echo stats
 	@echo clean
@@ -48,33 +48,24 @@ _header:
 	@echo Safe Exam
 	@echo ---------
 
+DOCKER_COMPOSE_FILES=-f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.traefik.prod.yml
+DOCKER_COMPOSE_FILES_DEV=-f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.traefik.dev.yml
+
 _start-command:
-	@docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --remove-orphans
+	@docker compose $$DOCKER_COMPOSE_FILES up -d --remove-orphans nginx phpmyadmin postfix
 
 _start-command-dev:
-	@docker compose -f docker-compose.yml -f docker-compose.dev.yml up -d --remove-orphans
-
-_start-command-traefik:
-	@docker compose -f docker-compose.yml -f docker-compose.prod.yml -f docker-compose.traefik.prod.yml up -d --remove-orphans nginx phpmyadmin postfix
-
-_start-command-dev-traefik:
-	@docker compose -f docker-compose.yml -f docker-compose.dev.yml -f docker-compose.traefik.dev.yml up -d --remove-orphans nginx phpmyadmin mailpit
+	@docker compose $$DOCKER_COMPOSE_FILES_DEV up -d --remove-orphans traefik nginx phpmyadmin mailpit
 
 start: _start-command _urls
 
 start-dev: _start-command-dev _urls-dev
 
-start-traefik: _start-command-traefik _urls
-
-start-dev-traefik: _start-command-dev-traefik _urls-dev
-
 stop:
-	@docker compose stop
+	@docker compose $$DOCKER_COMPOSE_FILES down
 
-restart: stop start
-
-stop-all:
-	@docker stop $(shell docker ps -aq)
+stop-dev:
+	@docker compose $$DOCKER_COMPOSE_FILES_DEV down
 
 workspace:
 	@docker compose exec php /bin/bash
@@ -122,10 +113,10 @@ install-dev:
 	@docker compose exec php npm run build
 
 build:
-	@docker compose pull && docker compose build --pull
+	@docker compose pull && docker compose $$DOCKER_COMPOSE_FILES build --pull
 
 build-dev:
-	@docker compose pull && docker compose -f docker-compose.yml -f docker-compose.dev.yml build --pull
+	@docker compose pull && docker compose $$DOCKER_COMPOSE_FILES_DEV build --pull
 
 redis-cli:
 	@docker compose exec redis redis-cli
@@ -137,4 +128,4 @@ stats:
 	@docker stats
 
 clean:
-	@docker compose down -v --remove-orphans
+	@docker compose $$DOCKER_COMPOSE_FILES_DEV down -v --remove-orphans

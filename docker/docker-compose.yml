@@ -1,25 +1,5 @@
 services:
 
-  https-portal:
-    image: steveltn/https-portal:${HTTPS_PORTAL_VERSION}
-    environment:
-      # noinspection HttpUrlsUsage
-      DOMAINS: >
-        ${HTTPS_PORTAL_SITES}
-      CLIENT_MAX_BODY_SIZE: 1024M
-      SERVER_NAMES_HASH_BUCKET_SIZE: 1024
-      WEBSOCKET: true
-      STAGE: ${HTTPS_PORTAL_STAGE}
-    volumes:
-      - https-portal_certs:/var/lib/https-portal
-      - https-portal_logs:/var/log/nginx
-    ports:
-      - "80:80"
-      - "443:443"
-    depends_on:
-      - nginx
-      - phpmyadmin
-
   mariadb:
     image: mariadb:${MARIADB_VERSION}
     environment:
@@ -88,7 +68,5 @@ services:
       - 6379
 
 volumes:
-  https-portal_certs:
-  https-portal_logs:
   mariadb_data:
   redis_data:

@@ -6,7 +6,6 @@ REDIS_VERSION=8.0
 PHPMYADMIN_VERSION=latest
 PHPREDISADMIN_VERSION=latest
 NGINX_VERSION=mainline
-HTTPS_PORTAL_VERSION=1
 
 # Variables de configuración
 MYSQL_ROOT_PASSWORD=12345Abcde
@@ -16,10 +15,6 @@ MYSQL_PASSWORD=12345Abcde
 
 # Prefijo para los contenedores
 COMPOSE_PROJECT_NAME=safe-exam
-
-# Sitios web
-HTTPS_PORTAL_SITES=safe-exam.test -> http://nginx:80, www.safe-exam.test => https://safe-exam.test, phpmyadmin.safe-exam.test -> http://phpmyadmin:80,
-HTTPS_PORTAL_STAGE=local
 
 # Servidor de correo saliente en producción
 POSTFIX_ALLOWED_SENDER_DOMAINS=safe-exam.test

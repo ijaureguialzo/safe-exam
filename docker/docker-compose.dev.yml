@@ -1,12 +1,24 @@
 services:
 
-  https-portal:
-    environment:
-      DOMAINS: >
-        mailpit.safe-exam.test -> http://mailpit:8025,
-        ${HTTPS_PORTAL_SITES}
+  traefik:
+    image: traefik:${TRAEFIK_VERSION:-3}
+    ports:
+      - "80:80"
+      - "443:443"
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-dashboard.rule=Host(`${FQDN_TRAEFIK:-traefik.test}`) && (PathPrefix(`/api`) || PathPrefix(`/dashboard`))"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-dashboard.service=api@internal"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-dashboard.entrypoints=websecure"
+      - "traefik.http.routers.${COMPOSE_PROJECT_NAME}-dashboard.tls=true"
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./traefik/traefik.yml:/etc/traefik/traefik.yml:ro
     depends_on:
-      - mailpit
+      - nginx
+      - phpmyadmin
 
   php:
     image: safe-exam-php-dev

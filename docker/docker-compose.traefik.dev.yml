@@ -26,4 +26,3 @@ services:
 networks:
   default:
     name: ${NETWORK_NAME:-traefik-network}
-    external: true

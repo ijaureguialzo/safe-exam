@@ -1,10 +1,5 @@
 services:
 
-  https-portal:
-    restart: unless-stopped
-    depends_on:
-      - postfix
-
   mariadb:
     restart: unless-stopped
 
