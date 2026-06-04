@@ -11,11 +11,11 @@ help: _header
 	${info }
 	@echo Opciones:
 	@echo ------------------------------------------
-	@echo build / build-dev
-	@echo start / start-dev
-	@echo install / install-dev
+	@echo build / build-prod
+	@echo start / start-prod
+	@echo install / install-prod
 	@echo seed
-	@echo stop / stop-dev
+	@echo stop / stop-prod
 	@echo ------------------------------------------
 	@echo workspace / workspace-root
 	@echo test
@@ -57,15 +57,15 @@ _start-command:
 _start-command-dev:
 	@docker compose $$DOCKER_COMPOSE_FILES_DEV up -d --remove-orphans traefik nginx phpmyadmin mailpit
 
-start: _start-command _urls
+start: _start-command-dev _urls-dev
 
-start-dev: _start-command-dev _urls-dev
+start-prod: _start-command _urls
 
 stop:
-	@docker compose $$DOCKER_COMPOSE_FILES down
-
-stop-dev:
 	@docker compose $$DOCKER_COMPOSE_FILES_DEV down
+
+stop-prod:
+	@docker compose $$DOCKER_COMPOSE_FILES down
 
 workspace:
 	@docker compose exec php /bin/bash
@@ -103,20 +103,20 @@ update:
 	@git commit -a -m "Actualización de dependencias"
 
 install:
-	@docker compose exec php composer install --no-dev
-	@docker compose exec php npm install
-	@docker compose exec php npm run build
-
-install-dev:
 	@docker compose exec php composer install
 	@docker compose exec php npm install
 	@docker compose exec php npm run build
 
-build:
-	@docker compose pull && docker compose $$DOCKER_COMPOSE_FILES build --pull
+install-prod:
+	@docker compose exec php composer install --no-dev
+	@docker compose exec php npm install
+	@docker compose exec php npm run build
 
-build-dev:
+build:
 	@docker compose pull && docker compose $$DOCKER_COMPOSE_FILES_DEV build --pull
+
+build-prod:
+	@docker compose pull && docker compose $$DOCKER_COMPOSE_FILES build --pull
 
 redis-cli:
 	@docker compose exec redis redis-cli
